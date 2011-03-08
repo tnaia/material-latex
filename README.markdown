@@ -13,4 +13,4 @@ FAQ
 #### Onde consigo o pdf do material?
 
 Temporariamente, uma versão atual do material está disponível
-[aqui](http://www.ime.usp.br/~tassio/apostila.pdf)
+[aqui](http://www.ime.usp.br/~tassio/apostila.pdf).
