@@ -110,13 +110,15 @@ no material. Está sujeita a alterações!
 #### Outros elementos
 
 * notas de rodapé
+* marginpar (ragged)
+
+#### Mais sobre figuras 
 
 * figuras (graphicx, um bocadito sobre tikz)
 
 #### Alinhamento
 
 * saindo do modo justificado: raggedleft & raggedright
-* marginpar (ragged)
 
 #### Novos ambientes
 
@@ -124,11 +126,15 @@ no material. Está sujeita a alterações!
 
 * contadores (básico)
 
-#### clearpage, newpage, documentclass options
+#### documentclass options
 
-* twoside, twocolumn, 
+#### quebrando páginas
 
+#### Descobrindo mais
 * como descobrir mais: ctan, tug
+
+#### clearpage, newpage, 
+* twoside, twocolumn 
 
 #### LaTeX symbols
 

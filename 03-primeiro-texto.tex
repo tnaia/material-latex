@@ -1,0 +1,151 @@
+\section{Primeiro documento}
+
+
+\subsection{Texto e sequências de controle}
+
+Quando você escreve um texto~\LaTeX, a maior parte do tempo você está
+escvrevendo como se usasse uma máquina de escrever
+comum. Eventualmente, no entanto, você desejará acrescentar algo ao
+texto além de palavras. Pode ser que queira \emph{enfatizar alguma
+  passagem}, ou
+
+\begin{quote}
+  ``\ldots \textsl{citar algo que, alguma vez, muito apropriadamente, foi
+    dito ou escrito, e que ilustra bem o que quer que seja.''}
+
+  \hfill\textsl{Autor Conhecido}
+\end{quote}
+
+Em situações como essas, empregam-se \emph{sequências de controle},
+que especificam o papel que alguma palavra, região ou ponto do texto
+possui.
+
+Por exemplo, empreguei uma palavra de controle (\emph{control word})
+pouco acima, para dizer ao \LaTeX\ que ``Texto e sequências de
+controle'' é um título de seção. Sabendo disso,  o sistema pode fazer
+várias coisas, como
+\begin{enumerate}
+\item descobrir o número da seção,
+\item alterar o tamanho e peso da fonte empregada para escrever as
+  palavras do título (com o número da seção ao lado), e
+\item acrescentar uma linha ao sumário do texto com o número da página
+  em que a seção começa.
+\end{enumerate}
+
+Usualmente, sequências de controle iniciam por uma barra `\verb|\|',
+e são seguidas por letras\index{letras} (considermos aqui letras os
+caracteres {\tt A} a {\tt Z}, e {\tt a} a {\tt z}). Há um outro tipo
+de sequência de controle, que chamaremos aqui de caractere de controle
+(control character), que consiste de uma barra seguida de um caractere
+não-letra, por exemplo `\verb|\-|', e `\verb|\"|' (a função dessas
+sequências será explicada nas seções \ref{indefinida} e
+\ref{indefinida}).
+
+Naturalmente, surge a pergunta: mas e se eu quiser usar uma
+\textbackslash\ no meu texto? De fato, se você digitar
+``\verb|amigo\inimigo|'' para obter amigo\textbackslash inimigo, terá
+uma surpresa: muito provavelmente o \LaTeX\ reclamará de uma
+\verb!undefined control sequence \inimigo!. Veremos mais adiante que
+alguns caracteres são ``reservados'' pelo \LaTeX\ para algumas funções
+especiais. Alguns exemplos são os caracteres `\%', `\$' e `\_', além,
+claro, do nosso amigo `\verb|\|'. Se você deseja usá-los no seu texto,
+será preciso usar alguma sequência de controle que os coloque lá. A
+propósito, as sequências de controle necessárias para esses caracteres
+em particular são
+
+\begin{center}
+  `\verb|\%|' \ para \ `\%'%
+  \qquad`\verb|\$|' \ para  \ `\$'%
+  \qquad`\verb|\_|\negthinspace' \ para \ `\_'%
+  \qquad`\verb|\textbackslash|' \ para \ `\textbackslash'\qquad
+\end{center}
+
+\subsection{Um documento simples}
+
+Um texto preparado para o \LaTeX\ em geral é precedido por um
+``preâmbulo'', em que geralmente são descritas características do
+texto (por exemplo, se ele é uma carta, um livro, um relatório; quem é
+o seu autor; se o documento será impresso frente e verso, ou se apenas
+uma página por folha.
+
+\begin{verbatim}
+\documentclass{article}
+\begin{document}
+
+Olá mundo! % Êpa?! Que é isso?
+
+\end{document}
+\end{verbatim}
+
+Vejamos o que cada parte significa. A primeira linha declara a
+\emph{classe} do documento. A classe \verb!article!, define uma série
+de coisas, como o tamanho das margens e a formatação de muitos
+elementos do texto, p.~ex., a posição dos números das páginas. Outras
+classes comumente usadas incluem \verb!letter!, para cartas,
+\verb!beamer! para apresentações de slides, \verb!report! para
+relatórios e \verb!book! para livros, \verb!a0poster! para pôsteres em
+A0, etc. Há vários outros: modelos para teses disponibilizados por
+universidades, muitos dos quais se pode obter gratuitamente na internet.
+
+
+\subsection{Parâmetros}
+O que são comandos\index{comando} (e parâmetros).
+
+\subsection{Regiões}
+Regiões.
+
+\subsection{Acentuação: para além do ASCII}
+
+\subsection{Verbatim: {\tt \\verb}}
+Sequências de controle(\verb!\'! \verb!\"!).
+
+\begin{verbatim}
+\documentclass{article}
+    
+\begin{document}
+    
+Ol\'a mundo! % Êpa?! Que é que é isso?
+    
+\end{document}
+\end{verbatim}
+
+Pacotes (e parâmetros opcionais).
+
+\begin{verbatim}
+\documentclass{article}
+    
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\begin{document}
+
+As grandiloquência exibicionista são pouco persuasiva para aqueles
+honestamente curioso.
+   
+Verdade                           isso. 
+Para         quem         ja tanto circunvaga o sentido, cheio de
+dedos no pântano dos significados, um pouco de tento com o que
+passa a ser floreio decorativo é no mínimo cortês.
+\end{document}
+\end{verbatim}
+
+Quebra de linha
+
+Hifenando (nova regra, correção pontual --- nomes estrangeiros,
+talvez?)
+
+Espaços
+
+Caracteres especiais \verb!\ _ ^ & # { }!
+
+Tipos de hífen
+
+Ligaduras
+
+Kerning
+
+Marcação de conteúdo
+
+(breve) história do TeX, do LaTeX e irmãos
+
+Resumo de como o sistema ``monta'' as páginas
+
