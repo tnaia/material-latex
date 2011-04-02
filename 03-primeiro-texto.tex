@@ -63,36 +63,117 @@ em particular são
 \subsection{Um documento simples}
 
 Um texto preparado para o \LaTeX\ em geral é precedido por um
-``preâmbulo'', em que geralmente são descritas características do
+\emph{preâmbulo}, em que geralmente são descritas características do
 texto (por exemplo, se ele é uma carta, um livro, um relatório; quem é
 o seu autor; se o documento será impresso frente e verso, ou se apenas
 uma página por folha.
+
+O trecho abaixo tem três sequências de controle. Vejamos o que
+significam. 
 
 \begin{verbatim}
 \documentclass{article}
 \begin{document}
 
-Olá mundo! % Êpa?! Que é isso?
+Olá mundo! % Colocar um conteúdo de verdade.
 
 \end{document}
 \end{verbatim}
 
-Vejamos o que cada parte significa. A primeira linha declara a
-\emph{classe} do documento. A classe \verb!article!, define uma série
+
+Primeiro definimos a \emph{classe} do documento, com a
+sequência de controle \verb|\documentclass|. Essa sequência requer um
+parâmetro, (qual a classe do documento, no caso \verb!article!) que é passado entre
+chaves. Teremos mais a falar sobre parâmetros, ou \emph{argumentos}
+daqui a pouco.
+
+A classe \verb!article!, define uma série
 de coisas, como o tamanho das margens e a formatação de muitos
-elementos do texto, p.~ex., a posição dos números das páginas. Outras
+elementos do texto, p.~ex., a formatação dos números das páginas. Outras
 classes comumente usadas incluem \verb!letter!, para cartas,
 \verb!beamer! para apresentações de slides, \verb!report! para
-relatórios e \verb!book! para livros, \verb!a0poster! para pôsteres em
-A0, etc. Há vários outros: modelos para teses disponibilizados por
-universidades, muitos dos quais se pode obter gratuitamente na internet.
+relatórios, \verb!book! para livros, \verb!a0poster! para pôsteres em
+A0, etc. Há vários outros, como p.~ex., modelos para teses
+disponibilizados por universidades, muitos dos quais se pode obter
+gratuitamente na internet.
 
+A seguir, demarca-se o início do documento propriamente dito. O par de
+sequências de controle \verb!\begin! e \verb!\end! delimita uma
+\emph{região} (falaremos mais delas brevemente). Aqui, a região é o
+próprio documento, seu conteúdo visível. Assim,
+\verb!\begin{document}! delimita o início de uma região do tipo
+\emph{document}, que é encerrada por \verb!\end{document}!.
+
+Finalmente, o conteúdo do documento: a frase ``Olá mundo!'', seguida
+de um \emph{comentário}. se você é um programador, a noção de
+comentário (como aliás muitas outras que abordaremos aqui)  deve
+ser-lhe bem familiar. Em nosso exemplo, o comentário é 
+
+\begin{center}
+  \it Colocar um conteúdo de verdade.
+\end{center}
+
+Comentários iniciam-se por um caractere `\verb.%.', e vão até o fim da
+linha. Comentários são anotações no texto que o autor pode fazer para
+lembrar-se de alguma coisa, embora possam ter outros usos.
 
 \subsection{Parâmetros}
-O que são comandos\index{comando} (e parâmetros).
+
+As sequências de controle (também chamadas aqui de
+\emph{comandos}\index{comando}) encontradas, ou  até agora foram
+sempre seguidas de algum texto entre chaves. Em \LaTeX, as chaves
+servem para agrupar coisas, para que sejam vistas como uma entidade
+só. 
+
+De modo geral, sequências de controle operam de acordo com os
+parâmetros, ou argumentos, que passamos para elas. Se uma sequência
+emprega um certo número de parâmetros (digamos, 2), ela considera que
+eles são os (dois) agrupamentos imediatamente depois dela. Mas
+atenção: o \LaTeX\ sempre considera agrupamento a menor unidade indivisível
+que encontra ao ler um texto! Letras que não estejam  envolvidas em
+chaves são, cada uma, um elemento diferente, assim como sequências de
+controle o são. Por outro lado, um texto envolvido entre chaves conta
+como um único agrupamento, um único elemento.
+
+Por exemplo, suponhamos que haja um comando \verb!\importante! para
+destacar texto, que opere sobre um único parâmetro (o texto
+importante). O que cada uma das linhas a seguir destaca?
+
+\begin{verbatim}
+\importante Lembre-se de usar chaves!
+\importante{fazer as compras}
+\importante{Destacar textos {importantes}}
+\end{verbatim}
+
+Respostas: (Você tentou os exercícios? Vá lá, mais uma chance!)
+Respectivamente: ``L''; ``fazer as compras'', e ``Destacar textos {importantes}''.
+
+Comandos em sempre precisam de argumentos. Por exemplo,
+\verb!\newpage! termina a página atual e continua o texto na página
+seguinte, e \verb!\maketitle! mostra o título, autor e data do texto.
 
 \subsection{Regiões}
-Regiões.
+
+Você já deve ter reparado que há uma certa ``anatomia'' no
+texto. Por exemplo, há imagens, citações, tabelas, poemas, listas,
+enumerações, e descrições, só para citar alguns. Todos são 
+elementos de natureza diferente do texto, tanto visual como
+conceitualmente.
+
+Essas regiões, também chamadas de \emph{ambientes}, são trechos do
+texto que têm um papel diferente, e, assim, provavelmente demandam um
+tratamento diferente.
+
+Já usamos regiões uma vez nesta apostila: o corpo do texto, o
+\emph{document}, onde vivem seus elementos visíveis. Neste ponto, você
+já deve imaginar como fazer para delimitar um ambiente. Digamos, que
+uma parte de nosso relatório seja pura magia. Para que isso seja de
+fato incorporado ao texto, basta fazer.
+\begin{verbatim}
+\begin{pura-magia}
+Chirrin-chirrion!
+\end{pura-magia}
+\end{verbatim}
 
 \subsection{Acentuação: para além do ASCII}
 
