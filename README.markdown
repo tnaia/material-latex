@@ -7,6 +7,10 @@ para instrução operacional ao LaTeX. Procura-se enfatizar os
 paradigmas reforçados pelo sistema, e as metáforas de sua 
 linguagem.
 
+*IMPORTANTE*: O texto ainda está em fase de elaboração, sujeito a
+ várias mudanças (mesmo estruturais). Dito isso, prossiga com cautela
+ à sua leitura.
+
 FAQ
 ---
 
