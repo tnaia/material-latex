@@ -1,6 +1,9 @@
-\usepackage[brazil]{babel}
+\usepackage[brazil,english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[pdfpagelabels,colorlinks]{hyperref}
+\hypersetup{colorlinks, 
+           bookmarksopen=true,
+           pdftex}
 \usepackage{a4wide}
 \usepackage{indentfirst}
 %\usepackage[xindy]{glossaries}
@@ -12,5 +15,23 @@
 \makeindex
 \newcommand{\extensao}[1]{\texttt{#1}}
 \newcommand{\pacote}[1]{\textsc{#1}}
+\usepackage{verbatim}
+\newsavebox{\mybox}
+\newlength{\mydepth}
+\newlength{\myheight}
+%\newenvironment{detalhe}{\hfill\begin{minipage}{.8\textwidth}}{\end{minipage}}
+
+
+
+\newenvironment{detalhe}%
+{\smallskip\hfill\begin{lrbox}{\mybox}\footnotesize\begin{minipage}{.95\textwidth}}%
+{\end{minipage}\end{lrbox}%
+\settodepth{\mydepth}{\usebox{\mybox}}%
+\settoheight{\myheight}{\usebox{\mybox}}%
+\addtolength{\myheight}{\mydepth}%
+\noindent\makebox[0pt]{\hspace{-20pt}\rule[-\mydepth]{1pt}{\myheight}}%
+\usebox{\mybox}\smallskip}
+
+
 \title{Mais uma apostila de \LaTeX}
 \author{Tássio Naia dos Santos} % por enquanto

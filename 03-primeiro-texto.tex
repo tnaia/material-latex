@@ -177,20 +177,168 @@ Chirrin-chirrion!
 
 \subsection{Acentuação: para além do ASCII}
 
-\subsection{Verbatim: {\tt \\verb}}
-Sequências de controle(\verb!\'! \verb!\"!).
-
+Ao experimentar os exemplos dados até agora (se não fez, esta é uma
+boa oportunidade! Tente gerar documentos a partir dos exemplos até
+agora, eu fico aqui esperando) você deve ter reparado que os
+caracteres acentuados não aparecem no documento final. Mas experimente
+o seguinte
 \begin{verbatim}
 \documentclass{article}
-    
 \begin{document}
-    
-Ol\'a mundo! % Êpa?! Que é que é isso?
-    
+Ol\'a mundo! Voc\^e come\c cou a notar algo?
 \end{document}
 \end{verbatim}
 
-Pacotes (e parâmetros opcionais).
+Não desespere. Acentuar é muito mais fácil do que isso. Tentemos outra
+coisa
+\begin{verbatim}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\begin{document}
+Olá mundo! Você começou a notar algo?
+\end{document}
+\end{verbatim}
+
+Qual o resultado? E se você tentar o seguinte?
+\begin{verbatim}
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\begin{document}
+Olá mundo! Você começou a notar algo?
+\end{document}
+\end{verbatim}
+
+Uma das alternativas acima deve solucionar a questão dos acentos em
+seu computador, a depender de como estão armazendas as letras no
+seu texto Mais precisamente, cada uma das linhas novas, que começam
+por \verb'\usepackage' tenta dizer ao \LaTeX\ como interpretar a
+\emph{codificação} do arquivo que ele irá processar.
+
+\begin{detalhe}
+O leitor atento poderá se perguntar: mas o texto que salvei é
+\emph{puro}\footnote{Usamos aqui \emph{texto puro} como tradução da
+  expressão em inglês \emph{plain text}: texto sem formatação.}, sem
+formatação alguma --- como ele pode ser armazenado de mais de um modo?
+quem determina que codificação o arquivo tem? 
+A resposta direta a essa pergunta é a seguinte: arquivos são
+armazenados como sequências de zeros e uns no computador (ao menos até
+este momento, em 2010). A \emph{codificação} de um arquivo é o
+conjunto de regras que associa a determinadas sequências de zeros e
+uns cada uma das letras de um texto.
+\end{detalhe}
+
+Mas o que faz o comando `\verb'\usepackage''? Veremos a seguir.
+
+\subsection{Pacotes}
+
+Uma característica importantíssima do \LaTeX\ está em sua
+expansibilidade, que permite que ele se adapte às necessidades
+dos mais variados usuários. Assim como é possível estender as
+capacidades de um programa acrescentando-lhe `plugins', `add-ons', ou,
+em mais baixo-nível, bibliotecas, é possível dotar o \LaTeX\ de mais
+comandos, pela inclusão de \emph{pacotes}.
+
+Pacotes são documentos de texto (como os que você escreve ao seguir
+esta apostila). Certo, eles não são \emph{exatamente} documentos de
+texto como os que você escreve agora: os pacotes possuem diversas
+definições de comandos, macros e ambientes, que agregam funcionalidade
+ao \LaTeX. Pacotes tem muitas vezes a extensão \extensao{sty}, embora
+você não precise se preocupar com esse detalhe (ao menos enquanto você
+não estiver escrevendo seus próprios pacotes, ou investigando as
+fascinantes entranhas do sistema).
+
+Para usar um pacote, basta usar o comando \verb'\usepackage'. Esse
+comando faz com que o \LaTeX\ procure pelo arquivo do pacote e torne
+sua funcionalidade disponível para que você dela disponha como quiser.
+O argumento do comando é o nome do pacote. Pouco atrás usamos um
+comando para poder usar acentos em arquivos codificados em \extensao{utf8}.
+\begin{center}\footnotesize
+\begin{verbatim}
+\usepackage[utf8]{inputenc}
+\end{verbatim}
+\end{center}
+
+Este comando tem um \emph{parâmetro opcional},
+\texttt{utf8}. Parâmetros opcionais estão presentes em vários
+comandos. Um parâmetro opcional pode ser omitido; ele geralmente
+representa alguma configuração ou pequena alteração no modo de
+funcionamento do comando.
+
+Assim, é comum que pacotes possam ser configurados por meio de
+parâmetros opcionais passados a eles.
+
+Da mesma maneira, classes de documento também podem ser configuradas
+por meio da passagem de parâmetros opcionais. Alguns exemplos: pode-se
+passar os parâmetros opcionais \texttt{11pt}, \texttt{twocolumn},
+\texttt{twoside}, \texttt{draft} para a declaração da classe
+\texttt{article}. Assim, para um documento a ser impresso
+frente-e-verso, em duas colunas, podemos escrever
+\begin{center}\footnotesize
+\begin{verbatim}
+\documentclass[twocolumn,twoside]{article}
+\begin{document}
+...
+\end{document}
+\end{verbatim}
+\end{center}
+
+É importante notar que separamos os parâmetros opcionais por
+vírgulas. Isso acontece para comandos como \texttt{documentclass} e
+\texttt{usepackage}, mas não é válido para outros comandos (vide
+seção~\ref{sec:comandos}).
+
+Há pacotes para as mais diversas coisas: acrescentar cor ao texto,
+usar capitulares (letras grandes, muitas vezes cheias de adornos, no
+início de parágrafos), para descrever palavras-cruzadas, jogos de
+xadrez, para desenhar, para fazer tabelas grandes, colocar trechos de
+texto em números variáveis de colunas, acrescentar marcas d'água,
+personalizar cabeçalhos e rodapés, e mesmo
+``meta-pacotes.''\footnote{Pacotes que auxiliam a escrita de outros
+  pacotes. Esses pacotes geralmente são de um gênero mais técnico,
+  parecendo às vezes ``coisa de programador.''}
+
+%\savebox{\mybox}{\protect\verb!\verb!}
+\subsection{Verbatim: \texttt{verbatim} e \texttt{\char`\\verb}}
+
+Por vezes o que queremos é que o texto digitado apareça exatamente
+como o escrevemos. Veremos a seguir que o \LaTeX\ toma algumas
+decisões por conta própria na hora de compor o texto, e os importantes
+benefícios que esse comportamento traz consigo. Por hora, mencionemos
+um importante exemplo: nem todo espaço no arquivo-fonte corresponderá
+a um espaço na formatação final. Calma, as palavras não serão
+coladas. Mas experimente usar dois espaços entre um par de palavras. O
+que acontece\footnote{Não há resposta aqui \texttt{=)}.}?
+
+Em algumas situações, como por exemplo em listagens de programas, pode
+ser útil usar o \LaTeX\ como se ele não fosse mais do que uma máquina
+de escrever digital. Queremos que o texto seja posto \emph{verbatim},
+isto é, exatamente como foi escrito. Para isso, podemos usar (sic) o
+ambiente \verb'verbatim', 
+
+\begin{center}\footnotesize\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.5\textwidth}
+\verbatiminput{03-verbatim-example-01}
+\end{minipage} &
+\begin{minipage}{.5\textwidth}
+\input{03-verbatim-example-01}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+
+Há um outro método para ``cancelar'' a interpretação de caracteres,
+para trechos menores, destinados a viver dentro de uma frase
+comum. Por exemplo, as várias vezes em que me referi a comandos
+\verb'\LaTeX', precisei fazer com que a interpretação do comando fosse
+abortada (caso contrário, teria obtido \LaTeX). O comando que faz isso
+é o \verb'\verb', que possui uma sintaxe especial. O comando é seguido
+por um caractere qualquer (espaço vale!). Esse caractere servirá para
+delimitar o fim do argumento de \verb'\verb'. A esse caractere se
+segue o texto a ser ``verbatimizado,'' que é todo o texto até a
+próxima ocorrência do delimitador. Exemplo: \verb'\verb!\LaTeX!''
+resulta em `\verb!\LaTeX!', mas `\verb'\LaTeX'' resulta `\LaTeX'.
+
 
 \begin{verbatim}
 \documentclass{article}
