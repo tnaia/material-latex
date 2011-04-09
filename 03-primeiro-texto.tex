@@ -71,6 +71,7 @@ uma página por folha.
 O trecho abaixo tem três sequências de controle. Vejamos o que
 significam. 
 
+\begin{footnotesize}
 \begin{verbatim}
 \documentclass{article}
 \begin{document}
@@ -79,7 +80,7 @@ Olá mundo! % Colocar um conteúdo de verdade.
 
 \end{document}
 \end{verbatim}
-
+\end{footnotesize}
 
 Primeiro definimos a \emph{classe} do documento, com a
 sequência de controle \verb|\documentclass|. Essa sequência requer um
@@ -139,11 +140,13 @@ Por exemplo, suponhamos que haja um comando \verb!\importante! para
 destacar texto, que opere sobre um único parâmetro (o texto
 importante). O que cada uma das linhas a seguir destaca?
 
+\begin{footnotesize}
 \begin{verbatim}
 \importante Lembre-se de usar chaves!
 \importante{fazer as compras}
 \importante{Destacar textos {importantes}}
 \end{verbatim}
+\end{footnotesize}
 
 Respostas: (Você tentou os exercícios? Vá lá, mais uma chance!)
 Respectivamente: ``L''; ``fazer as compras'', e ``Destacar textos {importantes}''.
@@ -169,11 +172,15 @@ Já usamos regiões uma vez nesta apostila: o corpo do texto, o
 já deve imaginar como fazer para delimitar um ambiente. Digamos, que
 uma parte de nosso relatório seja pura magia. Para que isso seja de
 fato incorporado ao texto, basta fazer.
+
+\begin{footnotesize}
 \begin{verbatim}
 \begin{pura-magia}
 Chirrin-chirrion!
 \end{pura-magia}
 \end{verbatim}
+\end{footnotesize}
+
 
 \subsection{Acentuação: para além do ASCII}
 
@@ -182,15 +189,18 @@ boa oportunidade! Tente gerar documentos a partir dos exemplos até
 agora, eu fico aqui esperando) você deve ter reparado que os
 caracteres acentuados não aparecem no documento final. Mas experimente
 o seguinte
+\begin{footnotesize}
 \begin{verbatim}
 \documentclass{article}
 \begin{document}
 Ol\'a mundo! Voc\^e come\c cou a notar algo?
 \end{document}
 \end{verbatim}
+\end{footnotesize}
 
 Não desespere. Acentuar é muito mais fácil do que isso. Tentemos outra
 coisa
+\begin{footnotesize}
 \begin{verbatim}
 \documentclass{article}
 \usepackage[utf8]{inputenc}
@@ -198,8 +208,10 @@ coisa
 Olá mundo! Você começou a notar algo?
 \end{document}
 \end{verbatim}
+\end{footnotesize}
 
 Qual o resultado? E se você tentar o seguinte?
+\begin{footnotesize}
 \begin{verbatim}
 \documentclass{article}
 \usepackage[T1]{fontenc}
@@ -207,6 +219,7 @@ Qual o resultado? E se você tentar o seguinte?
 Olá mundo! Você começou a notar algo?
 \end{document}
 \end{verbatim}
+\end{footnotesize}
 
 Uma das alternativas acima deve solucionar a questão dos acentos em
 seu computador, a depender de como estão armazendas as letras no
@@ -273,14 +286,14 @@ passar os parâmetros opcionais \texttt{11pt}, \texttt{twocolumn},
 \texttt{twoside}, \texttt{draft} para a declaração da classe
 \texttt{article}. Assim, para um documento a ser impresso
 frente-e-verso, em duas colunas, podemos escrever
-\begin{center}\footnotesize
+\begin{footnotesize}
 \begin{verbatim}
 \documentclass[twocolumn,twoside]{article}
 \begin{document}
 ...
 \end{document}
 \end{verbatim}
-\end{center}
+\end{footnotesize}
 
 É importante notar que separamos os parâmetros opcionais por
 vírgulas. Isso acontece para comandos como \texttt{documentclass} e
@@ -334,30 +347,48 @@ comum. Por exemplo, as várias vezes em que me referi a comandos
 abortada (caso contrário, teria obtido \LaTeX). O comando que faz isso
 é o \verb'\verb', que possui uma sintaxe especial. O comando é seguido
 por um caractere qualquer (espaço vale!). Esse caractere servirá para
-delimitar o fim do argumento de \verb'\verb'. A esse caractere se
-segue o texto a ser ``verbatimizado,'' que é todo o texto até a
-próxima ocorrência do delimitador. Exemplo: \verb'\verb!\LaTeX!''
-resulta em `\verb!\LaTeX!', mas `\verb'\LaTeX'' resulta `\LaTeX'.
+delimitar o fim do argumento de \texttt{\char`\\{}verb}. A esse
+caractere se segue o texto a ser ``verbatimizado,'' que é todo o texto
+até a próxima ocorrência do delimitador. Exemplo:
+\verb'\verb!\LaTeX!'' resulta em `\verb!\LaTeX!', mas `\verb'\LaTeX''
+resulta `\LaTeX'.
 
 
-\begin{verbatim}
-\documentclass{article}
-    
-\usepackage[utf8]{inputenc}
-\usepackage[brazil]{babel}
-\begin{document}
+\subsection{Escrevendo com fluência --- rudimentos de tipografia}
 
-As grandiloquência exibicionista são pouco persuasiva para aqueles
-honestamente curioso.
-   
-Verdade                           isso. 
-Para         quem         ja tanto circunvaga o sentido, cheio de
-dedos no pântano dos significados, um pouco de tento com o que
-passa a ser floreio decorativo é no mínimo cortês.
-\end{document}
-\end{verbatim}
+Já dissemos que o \LaTeX\ tem um jeito particular de dispor o texto
+que escrevemos. Veremos agora que história é essa.
 
-Quebra de linha
+\noindent\begin{minipage}{\textwidth}
+\begin{center}\footnotesize\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.48\textwidth}
+\verbatiminput{03-verbatim-example-02}
+\end{minipage} &
+\begin{minipage}{.48\textwidth}
+\input{03-verbatim-example-02}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\end{minipage}
+
+Algo que salta à vista de primeira é que as quebras de linha não são
+respeitadas. Também parece que os espaços a mais são
+desconsiderados\dots e a realidade não está mesmo longe disso: um
+espaço ou vários espaços são a mesma coisa para o \LaTeX. Uma (única)
+quebra também é equivalente a um espaço. Duas quebras de linha, por
+outro lado, fazem com que um novo parágrafo seja iniciado.
+
+Notável também é o fato de que o primeiro
+parágrafo\index{paragrafo@parágrafo} não tem recuo, enquanto que os
+demais o têm. Isto se deve ao fato de que para algumas culturas (em
+particular na tipografia de língua inglesa), não é costumeiro marcar a
+primeira loinha de um parágrafo com recuo a menos que este seja
+precedido imediatamente por outro parágrafo. Afinal, esse recuo tem
+por objetivo facilitar a identificação visual do novo parágrafo, o que
+não é necessário se o parágrafo é o primeiro de uma seção ou capítulo
+do texto, por exemplo.
 
 Hifenando (nova regra, correção pontual --- nomes estrangeiros,
 talvez?)

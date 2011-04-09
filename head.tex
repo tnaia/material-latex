@@ -24,13 +24,13 @@
 
 
 \newenvironment{detalhe}%
-{\smallskip\hfill\begin{lrbox}{\mybox}\footnotesize\begin{minipage}{.95\textwidth}}%
+{\medskip\begin{lrbox}{\mybox}\footnotesize\begin{minipage}{\textwidth}}%
 {\end{minipage}\end{lrbox}%
 \settodepth{\mydepth}{\usebox{\mybox}}%
 \settoheight{\myheight}{\usebox{\mybox}}%
 \addtolength{\myheight}{\mydepth}%
 \noindent\makebox[0pt]{\hspace{-20pt}\rule[-\mydepth]{1pt}{\myheight}}%
-\usebox{\mybox}\smallskip}
+\usebox{\mybox}\medskip}
 
 
 \title{Mais uma apostila de \LaTeX}
