@@ -51,12 +51,43 @@ documento). Você pode escolher a data usando o comando
 Depois de especificados o título e o autor (mais de um autor pode ser
 declarado, separando-se seus nomes por \verb'\and'), você escolhe o
 ponto do texto em que quer que apareçam, e usa o comando
-\verb'maketitle'. Assim:
+\verb'\maketitle'. Et voilà!
 
-\maketitle
+\subsection{Sobre espaçamento horizontal}
 
-Et voilà!
+Nem todos os espaços são iguais. Nao só variam em tamanho, mas possuem
+comportamentos distintos. Falaremos a seguir dos 
+\emph{espaços duros}\index{espacos duros@espaços duros}
+e de espaços um pouco mais largos, embora isso esteja longe de esgotar
+o assunto\footnote{Espaço preenchido e espaço em branco estão em
+  constante interação em qualquer peça de composição visual.}.
 
-\subsection{Sobre espaçamento}
-\verb!\@.! para fim de frase
+Todo parágrafo justificado, isto é, que tem as margens direita e
+esquerda, exige que o espaçamento entre palavras seja ``elástico'',
+aumentando ou diminuindo conforme a necessidade. O \LaTeX\ possui um
+mecanismo elaborado para isso, que não descreveremos aqui. Ainda
+assim, é importante saber que alguns espaços são mais elásticos do que
+outros, e que os espaços comuns possuem limites de compressão e
+expansão.
+
+Por exemplo, espaçamento seguindo a pontuação de uma frase é mais
+elástico que o espaço que une as demais palavras. Mas como o fim de
+uma frase é identificado?
+
+Por padrão, o \LaTeX assume que um ponto final --- ou outra pontuação
+como `?{}', ou `!{}', ou `\ldots'
+(reticências\index{reticencias@reticências} são produzidas usando o
+comando \verb'\ldots') --- marca o fim de uma
+frase sempre que, e somente quando, for precedida por uma letra
+minúscula. Na maior parte dos casos esse comportamento é exatamente o
+que precisamos, mas nem sempre.
+
+Títulos como Dr.\ não terminam uma frase, na maior parte dos
+casos. Isso é resolvido usando `\verb*'Dr.\ ''. 
+Por outro lado, existem casos em que uma letra maiúscula seguida de
+pontuação \emph{termina} uma frase: URSS\@. Para indicar que o ponto
+final após uma letra maiúscula termina a frase, correto?
+\begin{center}\footnotesize
+\verb'Entendi, OK\@. A frase terminou no último ponto. E nesse também. E nesses.'
+\end{center}
 
