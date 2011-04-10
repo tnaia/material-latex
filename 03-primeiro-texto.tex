@@ -509,15 +509,46 @@ dela se a palavra for usada novamente.
 \end{center}
 \medskip
 
-Caracteres especiais \verb!\ _ ^ & # { }!
+\subsubsection{Caracteres reservados}
 
-Tipos de hífen
+São dez os caracteres reservados pelo \LaTeX\ para funções especiais
+(ou seja, é preciso alguma ginástica para obtê-los). Eles são os seguintes.
 
+\begin{center}
+\verb'\   _   ^   ~   &   #   {   }   %   $'
+\end{center}
+
+A barra marca o início de um comando; o ``underscore'' e o circumflexo
+são usados no modo matemático (seção~\ref{sec:matematica}); o ``e
+comercial'' é usado em tabelas (seção~\ref{sec:tabelas}); o ``jogo da
+velha'' é usado na definição de comandos (seção~\ref{sec:comandos});
+as chaves agrupam texto; o caractere de porcentagem marca o início de
+comentários; e o cifrão delimita o modo matemático.
+
+Esses caracteres podem ser usados em um documento prefixando-os por
+uma barra.
+
+\medskip
+\begin{center}\footnotesize\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.465\textwidth}
+\verbatiminput{03-verbatim-example-05}
+\end{minipage} &
+\begin{minipage}{.465\textwidth}
+\centering \input{03-verbatim-example-05}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
+
+A exceção é a barra, que pode ser obtida  por meio do
+comando \verb'\textbackslash'.
+ 
+\subsubsection{Apurando os sentidos: ligaduras, kerning e história}
 Ligaduras
 
 Kerning
-
-Marcação de conteúdo
 
 (breve) história do TeX, do LaTeX e irmãos
 
