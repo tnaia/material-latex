@@ -1,11 +1,62 @@
 \section{Elementos básicos da composição do texto}
 
+\subsection{Palavras de controle e texto}
+
+Para construir um texto usamos aqui nada mais que palavras e comandos,
+simplesmente. Nesta seção veremos como eles se coordenam.
+
+Durante o processamento de seu texto, a maior parte do tempo o
+\LaTeX\ apenas encontra letras comuns, que prepara para colocar em um
+parágrafo. Algumas vezes, no entanto, ele encontra uma barra --- o que
+significa que uma sequência de controle foi encontrada. Se o caractere
+seguinte não for uma letra, trata-se de um 
+\emph{caractere de controle} (vide seção \ref{subsec:seq-controle}), e
+o \LaTeX continua processando o texto, levando em conta, claro, o
+significado do comando que encontrou. Já se após a barra encontra uma
+letra, o sistema se prepara para ler uma palavra de controle: continua
+a ler caracteres do texto até encontrar o primeiro caractere que não
+seja uma letra\footnote{Lembre-se: letras são os caracteres de
+  \texttt{a} a \texttt{z} e de \texttt{A} a \texttt{Z}.}. Se a palavra
+de controle é seguida de espaços em branco, \emph{eles são
+  ignorados}, se ela é seguida de \emph{uma} quebra de linha, ela é
+ignorada também. O que acontece com mais quebras de linha?
+Experimente! Exercício: como você faria para escrever \TeX emplo?
+
+Se os espaços em branco são ignorados, como faço que uma palavra
+de controle como \LaTeX\ seja seguida por um espaço (como foi aqui)?
+Os espaços são necessários após uma palavra de controle para definir
+seu fim --- caso contrário, o \LaTeX\ consideraria que \verb'\TeXemplo' é
+uma palavra de controle só. Mas qualquer coisa que permita ao sistema
+identificar que a palavra de controle terminou serve para o mesmo
+propósito. Assim, se você colocar um grupo vazio seguindo o comando
+(`\verb'\TeX{} emplo''), ou colocar um grupo envolvendo o comando
+(`\verb'{\TeX} emplo''), o espaço que segue o fim do grupo será
+preservado. Há ainda um outro modo de colocar um espaço logo depois de
+uma palavra de controle, que é bem simples: basta usar o comando
+`\verb'\ '', que é uma barra seguida de um espaço. Esse comando
+simplesmente produz um espaço em branco, e podemos escrever
+`\verb'\TeX\ emplo'' para obter o \TeX\ emplo.
+
+\subsection{Títulos, autor e data de documentos}
+
+Em muitas classes de documentos, estão disponíveis os comandos para
+definir o título, o(s) autor(es) e a data do documento. Cada classe
+exibe essa informação de um modo, mas em boa parte delas você define o
+título com um comando \verb'\title{Minhas Férias}', o autor usando o
+comando \verb'\author{YoMoiIchEu}'. A data é composta automaticamente
+com a data em que o documento for processado (no idioma do
+documento). Você pode escolher a data usando o comando
+\verb'\date{Muito, muito tempo atrás}'.
+
+Depois de especificados o título e o autor (mais de um autor pode ser
+declarado, separando-se seus nomes por \verb'\and'), você escolhe o
+ponto do texto em que quer que apareçam, e usa o comando
+\verb'maketitle'. Assim:
+
+\maketitle
+
+Et voilà!
+
+\subsection{Sobre espaçamento}
 \verb!\@.! para fim de frase
-
-
-espaços engolidos após comandos diferente de seq de controle)
-
-enfatizando
-
-title, date, maketitle
 
