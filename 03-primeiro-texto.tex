@@ -4,7 +4,7 @@
 \subsection{Texto e sequências de controle}
 
 Quando você escreve um texto~\LaTeX, a maior parte do tempo você está
-escvrevendo como se usasse uma máquina de escrever
+escrevendo como se usasse uma máquina de escrever
 comum. Eventualmente, no entanto, você desejará acrescentar algo ao
 texto além de palavras. Pode ser que queira \emph{enfatizar alguma
   passagem}, ou
@@ -17,10 +17,9 @@ texto além de palavras. Pode ser que queira \emph{enfatizar alguma
 \end{quote}
 
 Em situações como essas, empregam-se \emph{sequências de controle},
-que especificam o papel que alguma palavra, região ou ponto do texto
-possui.
+que especificam o papel de alguma palavra, região ou ponto do texto.
 
-Por exemplo, empreguei uma palavra de controle (\emph{control word})
+Por exemplo, empreguei uma palavra de controle (\emph{control word\/})
 pouco acima, para dizer ao \LaTeX\ que ``Texto e sequências de
 controle'' é um título de seção. Sabendo disso,  o sistema pode fazer
 várias coisas, como
@@ -33,8 +32,9 @@ várias coisas, como
 \end{enumerate}
 
 Usualmente, sequências de controle iniciam por uma barra `\verb|\|',
-e são seguidas por letras\index{letras} (considermos aqui letras os
-caracteres {\tt A} a {\tt Z}, e {\tt a} a {\tt z}). Há um outro tipo
+e são seguidas por letras\index{letras} (consideramos aqui letras os
+caracteres `\texttt{A}' a `\texttt{Z}', e `\texttt{a}' a
+`\texttt{z}'). Há um outro tipo
 de sequência de controle, que chamaremos aqui de caractere de controle
 (control character), que consiste de uma barra seguida de um caractere
 não-letra, por exemplo `\verb|\-|', e `\verb|\"|' (a função dessas
@@ -84,9 +84,9 @@ Olá mundo! % Colocar um conteúdo de verdade.
 
 Primeiro definimos a \emph{classe} do documento, com a
 sequência de controle \verb|\documentclass|. Essa sequência requer um
-parâmetro, (qual a classe do documento, no caso \verb!article!) que é passado entre
-chaves. Teremos mais a falar sobre parâmetros, ou \emph{argumentos}
-daqui a pouco.
+parâmetro, (qual a classe do documento, no caso \verb!article!) que é
+posto entre chaves. Teremos mais a falar sobre parâmetros, ou
+\emph{argumentos} daqui a pouco.
 
 A classe \verb!article!, define uma série
 de coisas, como o tamanho das margens e a formatação de muitos
@@ -100,13 +100,13 @@ gratuitamente na internet.
 
 A seguir, demarca-se o início do documento propriamente dito. O par de
 sequências de controle \verb!\begin! e \verb!\end! delimita uma
-\emph{região} (falaremos mais delas brevemente). Aqui, a região é o
+\emph{região} (falaremos mais delas em breve). Aqui, a região é o
 próprio documento, seu conteúdo visível. Assim,
 \verb!\begin{document}! delimita o início de uma região do tipo
 \emph{document}, que é encerrada por \verb!\end{document}!.
 
 Finalmente, o conteúdo do documento: a frase ``Olá mundo!'', seguida
-de um \emph{comentário}. se você é um programador, a noção de
+de um \emph{comentário}. Se você é um programador, a noção de
 comentário (como aliás muitas outras que abordaremos aqui)  deve
 ser-lhe bem familiar. Em nosso exemplo, o comentário é 
 
@@ -121,16 +121,16 @@ lembrar-se de alguma coisa, embora possam ter outros usos.
 \subsection{Parâmetros}
 
 As sequências de controle (também chamadas aqui de
-\emph{comandos}\index{comando}) encontradas, ou  até agora foram
+\emph{comandos}\index{comando}) encontradas,  até agora foram
 sempre seguidas de algum texto entre chaves. Em \LaTeX, as chaves
-servem para agrupar coisas, para que sejam vistas como uma entidade
+servem para agrupar coisas, para que sejam vistas como uma unidade
 só. 
 
 De modo geral, sequências de controle operam de acordo com os
 parâmetros, ou argumentos, que passamos para elas. Se uma sequência
 emprega um certo número de parâmetros (digamos, 2), ela considera que
 eles são os (dois) agrupamentos imediatamente depois dela. Mas
-atenção: o \LaTeX\ sempre considera agrupamento a menor unidade indivisível
+atenção: o \LaTeX\ sempre considera \emph{agrupamento} a menor unidade indivisível
 que encontra ao ler um texto! Letras que não estejam  envolvidas em
 chaves são, cada uma, um elemento diferente, assim como sequências de
 controle o são. Por outro lado, um texto envolvido entre chaves conta
@@ -151,7 +151,7 @@ importante). O que cada uma das linhas a seguir destaca?
 Respostas: (Você tentou os exercícios? Vá lá, mais uma chance!)
 Respectivamente: ``L''; ``fazer as compras'', e ``Destacar textos {importantes}''.
 
-Comandos em sempre precisam de argumentos. Por exemplo,
+Comandos nem sempre precisam de argumentos. Por exemplo,
 \verb!\newpage! termina a página atual e continua o texto na página
 seguinte, e \verb!\maketitle! mostra o título, autor e data do texto.
 
@@ -171,7 +171,7 @@ Já usamos regiões uma vez nesta apostila: o corpo do texto, o
 \emph{document}, onde vivem seus elementos visíveis. Neste ponto, você
 já deve imaginar como fazer para delimitar um ambiente. Digamos, que
 uma parte de nosso relatório seja pura magia. Para que isso seja de
-fato incorporado ao texto, basta fazer.
+fato incorporado ao texto, basta fazer:
 
 \begin{footnotesize}
 \begin{verbatim}
@@ -185,10 +185,9 @@ Chirrin-chirrion!
 \subsection{Acentuação: para além do ASCII}
 
 Ao experimentar os exemplos dados até agora (se não fez, esta é uma
-boa oportunidade! Tente gerar documentos a partir dos exemplos até
-agora, eu fico aqui esperando) você deve ter reparado que os
-caracteres acentuados não aparecem no documento final. Mas experimente
-o seguinte
+boa oportunidade! Tente gerar documentos a partir dos exemplos, eu
+fico aqui esperando) você deve ter reparado que os caracteres
+acentuados não aparecem no documento final. Mas experimente o seguinte
 \begin{footnotesize}
 \begin{verbatim}
 \documentclass{article}
@@ -223,8 +222,8 @@ Olá mundo! Você começou a notar algo?
 
 Uma das alternativas acima deve solucionar a questão dos acentos em
 seu computador, a depender de como estão armazendas as letras no
-seu texto Mais precisamente, cada uma das linhas novas, que começam
-por \verb'\usepackage' tenta dizer ao \LaTeX\ como interpretar a
+seu texto. Mais precisamente, cada uma das linhas novas, que começam
+por \verb'\usepackage', tenta dizer ao \LaTeX\ como interpretar a
 \emph{codificação} do arquivo que ele irá processar.
 
 \begin{detalhe}
@@ -237,14 +236,14 @@ A resposta direta a essa pergunta é a seguinte: arquivos são
 armazenados como sequências de zeros e uns no computador (ao menos até
 este momento, em 2010). A \emph{codificação} de um arquivo é o
 conjunto de regras que associa a determinadas sequências de zeros e
-uns cada uma das letras de um texto.
+uns a cada uma das letras de um texto.
 \end{detalhe}
 
 Mas o que faz o comando `\verb'\usepackage''? Veremos a seguir.
 
 \subsection{Pacotes}
 
-Uma característica importantíssima do \LaTeX\ está em sua
+Uma característica importantíssima do \LaTeX\  é sua
 expansibilidade, que permite que ele se adapte às necessidades
 dos mais variados usuários. Assim como é possível estender as
 capacidades de um programa acrescentando-lhe `plugins', `add-ons', ou,
@@ -255,7 +254,7 @@ Pacotes são documentos de texto (como os que você escreve ao seguir
 esta apostila). Certo, eles não são \emph{exatamente} documentos de
 texto como os que você escreve agora: os pacotes possuem diversas
 definições de comandos, macros e ambientes, que agregam funcionalidade
-ao \LaTeX. Pacotes tem muitas vezes a extensão \extensao{sty}, embora
+ao \LaTeX. Pacotes têm muitas vezes a extensão \extensao{sty}, embora
 você não precise se preocupar com esse detalhe (ao menos enquanto você
 não estiver escrevendo seus próprios pacotes, ou investigando as
 fascinantes entranhas do sistema).
@@ -326,8 +325,9 @@ Em algumas situações, como por exemplo em listagens de programas, pode
 ser útil usar o \LaTeX\ como se ele não fosse mais do que uma máquina
 de escrever digital. Queremos que o texto seja posto \emph{verbatim},
 isto é, exatamente como foi escrito. Para isso, podemos usar (sic) o
-ambiente \verb'verbatim', 
+ambiente \verb'verbatim'.
 
+\medskip
 \begin{center}\footnotesize\hrule\smallskip
 \begin{tabular}{c|c}
 \begin{minipage}{.5\textwidth}
@@ -339,6 +339,7 @@ ambiente \verb'verbatim',
 \end{tabular}
 \smallskip\hrule
 \end{center}
+\medskip
 
 Há um outro método para ``cancelar'' a interpretação de caracteres,
 para trechos menores, destinados a viver dentro de uma frase
@@ -359,6 +360,7 @@ resulta `\LaTeX'.
 Já dissemos que o \LaTeX\ tem um jeito particular de dispor o texto
 que escrevemos. Veremos agora que história é essa.
 
+\medskip
 \noindent\begin{minipage}{\textwidth}
 \begin{center}\footnotesize\hrule\smallskip
 \begin{tabular}{c|c}
@@ -372,6 +374,7 @@ que escrevemos. Veremos agora que história é essa.
 \smallskip\hrule
 \end{center}
 \end{minipage}
+\medskip
 
 Algo que salta à vista de primeira é que as quebras de linha não são
 respeitadas. Também parece que os espaços a mais são
@@ -384,16 +387,25 @@ Notável também é o fato de que o primeiro
 parágrafo\index{paragrafo@parágrafo} não tem recuo, enquanto que os
 demais o têm. Isto se deve ao fato de que para algumas culturas (em
 particular na tipografia de língua inglesa), não é costumeiro marcar a
-primeira loinha de um parágrafo com recuo a menos que este seja
+primeira linha de um parágrafo com recuo a menos que este seja
 precedido imediatamente por outro parágrafo. Afinal, esse recuo tem
 por objetivo facilitar a identificação visual do novo parágrafo, o que
 não é necessário se o parágrafo é o primeiro de uma seção ou capítulo
 do texto, por exemplo.
 
+\LaTeX\ lida com uma granularidade maior de conceitos do que comumente
+nos é dado controlar em ambientes usuais de edição de texto; conceitos
+que, a princípio, podem surpreender os não iniciados ao universo dos
+cuidados tipográficos. A partir de agora, e à medida que adquire
+experiência com um sistema tipográfico de alta qualidade como o
+\LaTeX, você notará uma série de mudanças na percepção de um texto. Seu
+vocabulário vai crescer, seus olhos e atenção serão exercitados em
+novas direções, e muito provavelmente você se surpreenderá com a
+influência que ``detalhes'' têm no ritmo e facilidade de leitura de um
+texto. Mãos à obra!
+
 Hifenando (nova regra, correção pontual --- nomes estrangeiros,
 talvez?)
-
-Espaços
 
 Caracteres especiais \verb!\ _ ^ & # { }!
 
