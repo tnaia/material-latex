@@ -37,9 +37,9 @@ caracteres `\texttt{A}' a `\texttt{Z}', e `\texttt{a}' a
 `\texttt{z}'). Há um outro tipo
 de sequência de controle, que chamaremos aqui de caractere de controle
 (control character), que consiste de uma barra seguida de um caractere
-não-letra, por exemplo `\verb|\-|', e `\verb|\"|' (a função dessas
-sequências será explicada nas seções \ref{indefinida} e
-\ref{indefinida}).
+não-letra, por exemplo `\verb|\-|', e `\verb|\{|' (a função dessas
+sequências será explicada nas seções \ref{subsec:hifenacao} e
+\ref{sec:matematica}).
 
 Naturalmente, surge a pergunta: mas e se eu quiser usar uma
 \textbackslash\ no meu texto? De fato, se você digitar
@@ -182,7 +182,7 @@ Chirrin-chirrion!
 \end{footnotesize}
 
 
-\subsection{Acentuação: para além do ASCII}
+\subsection{Acentuação: para além do ASCII}\label{subsec:ascii}
 
 Ao experimentar os exemplos dados até agora (se não fez, esta é uma
 boa oportunidade! Tente gerar documentos a partir dos exemplos, eu
@@ -238,6 +238,29 @@ este momento, em 2010). A \emph{codificação} de um arquivo é o
 conjunto de regras que associa a determinadas sequências de zeros e
 uns a cada uma das letras de um texto.
 \end{detalhe}
+
+Apesar de os comandos para acentuação serem dispensáveis na maioria
+dos casos, há situações em que pode ser útil saber um truque ou
+outro. Principalmente quando o que se deseja é escrever algum nome
+estrangeiro em algum ponto particular do texto, e não se sabe como
+obter o caractere a partir do seu teclado.
+
+O trecho a seguir é um excerto do \TeX book.
+
+\medskip
+\begin{center}\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.405\textwidth}\footnotesize
+\verbatiminput{03-verbatim-example-03}
+\end{minipage} &
+\begin{minipage}{.535\textwidth}
+\input{03-verbatim-example-03}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
+
 
 Mas o que faz o comando `\verb'\usepackage''? Veremos a seguir.
 
@@ -310,7 +333,10 @@ personalizar cabeçalhos e rodapés, e mesmo
   parecendo às vezes ``coisa de programador.''}
 
 %\savebox{\mybox}{\protect\verb!\verb!}
-\subsection{Verbatim: \texttt{verbatim} e \texttt{\char`\\verb}}
+\subsection{%
+  \texorpdfstring{%
+  Verbatim: ambiente \texttt{verbatim} e \texttt{\char`\\{}verb}}{%
+  Verbatim: ambiente verbatim e \textbackslash verb}}
 
 Por vezes o que queremos é que o texto digitado apareça exatamente
 como o escrevemos. Veremos a seguir que o \LaTeX\ toma algumas
@@ -330,10 +356,10 @@ ambiente \verb'verbatim'.
 \medskip
 \begin{center}\footnotesize\hrule\smallskip
 \begin{tabular}{c|c}
-\begin{minipage}{.5\textwidth}
+\begin{minipage}{.465\textwidth}
 \verbatiminput{03-verbatim-example-01}
 \end{minipage} &
-\begin{minipage}{.5\textwidth}
+\begin{minipage}{.465\textwidth}
 \input{03-verbatim-example-01}
 \end{minipage}
 \end{tabular}
@@ -351,9 +377,8 @@ por um caractere qualquer (espaço vale!). Esse caractere servirá para
 delimitar o fim do argumento de \texttt{\char`\\{}verb}. A esse
 caractere se segue o texto a ser ``verbatimizado,'' que é todo o texto
 até a próxima ocorrência do delimitador. Exemplo:
-\verb'\verb!\LaTeX!'' resulta em `\verb!\LaTeX!', mas `\verb'\LaTeX''
-resulta `\LaTeX'.
-
+`\texttt{\char`\\{}verb!\char`\\LaTeX!}' resulta em `\verb!\LaTeX!',
+mas `\verb'\LaTeX'' resulta `\LaTeX'.
 
 \subsection{Escrevendo com fluência --- rudimentos de tipografia}
 
@@ -364,10 +389,10 @@ que escrevemos. Veremos agora que história é essa.
 \noindent\begin{minipage}{\textwidth}
 \begin{center}\footnotesize\hrule\smallskip
 \begin{tabular}{c|c}
-\begin{minipage}{.48\textwidth}
+\begin{minipage}{.465\textwidth}
 \verbatiminput{03-verbatim-example-02}
 \end{minipage} &
-\begin{minipage}{.48\textwidth}
+\begin{minipage}{.465\textwidth}
 \input{03-verbatim-example-02}
 \end{minipage}
 \end{tabular}
@@ -393,6 +418,25 @@ por objetivo facilitar a identificação visual do novo parágrafo, o que
 não é necessário se o parágrafo é o primeiro de uma seção ou capítulo
 do texto, por exemplo.
 
+Encontramos pela primeira vez também os comandos \verb'\LaTeX', que
+escreve \LaTeX, e \verb'\emph', que \emph{enfatiza} o texto que lhe é
+passado como parâmetro. Note que o que o comando faz é enfatizar: o
+jeito como ele faz isso não é a nossa preocupação nesse momento.
+
+\begin{center}
+\it O que importa aqui é que o trecho tem que ser destacado.  
+\end{center}
+
+E isso é diferente de dizer que o texto deve ser posto em negrito, ser
+sublinhado, ser escrito em fúcsia, \reflectbox{ou} \reflectbox{de}
+\reflectbox{algum} \reflectbox{jeito} \reflectbox{estranho}. Afinal, o
+paradigma aqui é que a aparência do texto refletirá a função, o papel
+semântico desempenhado por cada um de seus elementos. Assim,
+descreve-se num primeiro momento o que cada um
+\emph{significa}\index{marcacao semantica@marcação semântica},
+deixando-se para outra etapa (quando pertinente) o ajuste do modo pelo
+qual essa função é realçada visualmente.
+
 \LaTeX\ lida com uma granularidade maior de conceitos do que comumente
 nos é dado controlar em ambientes usuais de edição de texto; conceitos
 que, a princípio, podem surpreender os não iniciados ao universo dos
@@ -404,8 +448,66 @@ novas direções, e muito provavelmente você se surpreenderá com a
 influência que ``detalhes'' têm no ritmo e facilidade de leitura de um
 texto. Mãos à obra!
 
-Hifenando (nova regra, correção pontual --- nomes estrangeiros,
-talvez?)
+\subsubsection{Hífens e hifenação}\label{subsec:hifenacao}
+
+Muito embora haja apenas um tipo de hífen em seu teclado, existem
+muito mais hífens na tipogravia. Há aquele usado em palavras
+compostas, como ``guarda-chuva'' ou ainda ``resguardar-se'', e que também
+servem para marcar a quebra de uma palavra no fim de uma linha
+(sua \emph{hifenação}); há o traço usado para indicar um intervalo de números,
+por exemplo 12--14; há o travessão --- o mais longo entre os hífens; e
+há o sinal de menos, usado em equações, como em $20-3=17$. É fácil
+produzir cada um desses símbolos em \LaTeX.
+
+\begin{itemize}\footnotesize
+\item \verb'guarda-chuva', \verb'resguardar-se'
+\item \verb'exercícios das páginas 12--14' 
+\item \verb'no dia de hoje --- véspera de amanhã'
+\item \verb'diga-me também que $2-2=5$, Winston'
+\end{itemize}
+
+O último dos exemplos acima introduz o chamado \emph{modo
+  matemático}\index{modo matematico@modo matemático}, assunto da seção
+\ref{sec:matematica}.
+
+Mas há ainda o que falar sobre hifenação. Na maior parte dos casos, o
+\LaTeX sabe hifenar corretamente as palavras de diversos idiomas (o
+portugês entre eles). Para isso basta usar o pacote \pacote{babel},
+passando como parâmetro \parametro{brazil}. Algumas vezes, porém,
+usamos termos que possuem uma hifenação pouco comum, ou usamos
+palavras que o \LaTeX não consegue hifenar a contento. Quando isso
+ocorre, podemos dizer explícitamente em que pontos uma palavra pode
+ser hifenada. Há dois modos de fazê-lo: pode-se, no preâmbulo,
+adicionar um comando \verb'\hyphenation', que leva como parâmetro uma
+lista de hifenações, separadas por espaços, como abaixo. Note que não
+se podem usar comandos ou caracteres especiais no argumento do comando. 
+
+\begin{center}
+  \verb'\hyphenation{FNAC A-bra-cur-six}'
+\end{center}
+
+No exemplo acima, FNAC, fnac e Fnac não serão jamais hifenadas, ao
+passo que Abracursix e abracursix o serão, segundo os hífens
+especificados.
+
+Outro modo é explicar onde uma determinada ocorrência de uma palavra
+pode ser hifenada, quando ela ocorre no texto. Nesse caso, a sugestão
+de hifenação vale naquele ponto somente. O \LaTeX\ não se lembrará
+dela se a palavra for usada novamente.
+
+\medskip
+\begin{center}\footnotesize\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.465\textwidth}
+\verbatiminput{03-verbatim-example-04}
+\end{minipage} &
+\begin{minipage}{.465\textwidth}
+\input{03-verbatim-example-04}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
 
 Caracteres especiais \verb!\ _ ^ & # { }!
 
