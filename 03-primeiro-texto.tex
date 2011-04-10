@@ -546,11 +546,54 @@ A exceção é a barra, que pode ser obtida  por meio do
 comando \verb'\textbackslash'.
  
 \subsubsection{Apurando os sentidos: ligaduras, kerning e história}
-Ligaduras
 
-Kerning
+As letras por vezes requerem pequenas modificações no espaçamento
+entre si, ou mesmo em sua forma, a depender dos símbolos que estão
+próximos de si. Por exemplo, alguns pares de letras são aproximados,
+enquanto outras vezes, partes de letras se fundem. Observe os exemplos
+abaixo.
 
-(breve) história do TeX, do LaTeX e irmãos
+\medskip
+\noindent\begin{center}%
+\scalebox{3}[3]{f{i}}\hfil%
+\scalebox{3}[3]{fi}\hfil%
+\scalebox{3}[3]{T{a}}\hfil%
+\scalebox{3}[3]{Ta}
+\\[.9cm] 
+\scalebox{3}[3]{s{t}}\hfil%
+\scalebox{3}[3]{st}\hfil%
+\scalebox{3}[3]{f{l}}\hfil%
+\scalebox{3}[3]{fl}
+\end{center}
+\medskip
 
-Resumo de como o sistema ``monta'' as páginas
+Ligaduras (do inglês, \emph{ligatures}), ocorrem quando um agrupamento
+de letras é substituído por um outro símbolos, quer para melhorar sua
+legibilidade, quer por tornar o texto mais belo.
+
+Já o \emph{kerning} é um aumento ou diminuição do espaço entre letras,
+que varia de acordo com o entorno de cada caractere.
+
+\medskip
+\noindent\begin{center}%
+\scalebox{2}[2]{Uma {T}orta {P}ara {J}aiminho}
+
+\scalebox{2}[2]{Uma Torta Para Jaiminho}
+
+\medskip
+
+%\hfil\scalebox{2}[2]{\textsc{{V}á}}%
+%\scalebox{2}[2]{\textsc{Vá}}\hfil%
+\scalebox{2}[2]{\textsc{{A}varo}}\hfil%
+\scalebox{2}[2]{\textsc{Avaro}}%
+\hfil\scalebox{2}[2]{\textsc{{P}ara}}
+\hfil\scalebox{2}[2]{\textsc{Para}}\hfil
+\end{center}
+
+\begin{comment}
+  (breve) história do TeX, do LaTeX e irmãos
+  Resumo de como o sistema ``monta'' as páginas
+\end{comment}
+
+
 
