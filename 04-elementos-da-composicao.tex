@@ -11,18 +11,18 @@ parágrafo. Algumas vezes, no entanto, ele encontra uma barra --- o que
 significa que uma sequência de controle foi encontrada. Se o caractere
 seguinte não for uma letra, trata-se de um 
 \emph{caractere de controle} (vide seção \ref{subsec:seq-controle}), e
-o \LaTeX continua processando o texto, levando em conta, claro, o
-significado do comando que encontrou. Já se após a barra encontra uma
+o \LaTeX\ continua processando o texto, levando em conta, claro, o
+significado do comando que encontrou. Já se após a barra há uma
 letra, o sistema se prepara para ler uma palavra de controle: continua
 a ler caracteres do texto até encontrar o primeiro caractere que não
 seja uma letra\footnote{Lembre-se: letras são os caracteres de
   \texttt{a} a \texttt{z} e de \texttt{A} a \texttt{Z}.}. Se a palavra
 de controle é seguida de espaços em branco, \emph{eles são
-  ignorados}, se ela é seguida de \emph{uma} quebra de linha, ela é
+  ignorados}; e se ela é seguida de \emph{uma} quebra de linha, ela é
 ignorada também. O que acontece com mais quebras de linha?
 Experimente! Exercício: como você faria para escrever \TeX emplo?
 
-Se os espaços em branco são ignorados, como faço que uma palavra
+Se os espaços em branco são ignorados, como faço para que uma palavra
 de controle como \LaTeX\ seja seguida por um espaço (como foi aqui)?
 Os espaços são necessários após uma palavra de controle para definir
 seu fim --- caso contrário, o \LaTeX\ consideraria que \verb'\TeXemplo' é
@@ -31,8 +31,8 @@ identificar que a palavra de controle terminou serve para o mesmo
 propósito. Assim, se você colocar um grupo vazio seguindo o comando
 (`\verb'\TeX{} emplo''), ou colocar um grupo envolvendo o comando
 (`\verb'{\TeX} emplo''), o espaço que segue o fim do grupo será
-preservado. Há ainda um outro modo de colocar um espaço logo depois de
-uma palavra de controle, que é bem simples: basta usar o comando
+preservado. Há ainda um outro modo, mais simples, de colocar um espaço
+logo depois de uma palavra de controle: basta usar o comando
 `\verb'\ '', que é uma barra seguida de um espaço. Esse comando
 simplesmente produz um espaço em branco, e podemos escrever
 `\verb'\TeX\ emplo'' para obter o \TeX\ emplo.
@@ -50,17 +50,17 @@ documento). Você pode escolher a data usando o comando
 
 Depois de especificados o título e o autor (mais de um autor pode ser
 declarado, separando-se seus nomes por \verb'\and'), você escolhe o
-ponto do texto em que quer que apareçam, e usa o comando
-\verb'\maketitle'. Et voilà!
+ponto do texto no qual quer que apareçam, e usa o comando
+\verb'\maketitle'. Voilà!
 
 \subsection{Sobre espaçamento horizontal}
 
-Nem todos os espaços são iguais. Nao só variam em tamanho, mas possuem
+Nem todos os espaços são iguais. Não só variam em tamanho, mas possuem
 comportamentos distintos. Falaremos a seguir dos 
 \emph{espaços duros}\index{espacos duros@espaços duros}
 e de espaços um pouco mais largos, embora isso esteja longe de esgotar
-o assunto\footnote{Espaço preenchido e espaço em branco estão em
-  constante interação em qualquer peça de composição visual.}.
+o assunto.\footnote{Espaço preenchido e espaço em branco estão em
+  constante interação em qualquer peça de composição visual.}
 
 Todo parágrafo justificado, isto é, que tem as margens direita e
 esquerda, exige que o espaçamento entre palavras seja ``elástico'',
