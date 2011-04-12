@@ -1,6 +1,6 @@
 \section{Elementos básicos da composição do texto}
 
-\subsection{Palavras de controle e texto}
+\subsection{Palavras de controle e texto}\label{sec:palavras-de-controle}
 
 Para construir um texto usamos aqui nada mais que palavras e comandos,
 simplesmente. Nesta seção veremos como eles se coordenam.
@@ -53,28 +53,28 @@ declarado, separando-se seus nomes por \verb'\and'), você escolhe o
 ponto do texto no qual quer que apareçam, e usa o comando
 \verb'\maketitle'. Voilà!
 
-\subsection{Sobre espaçamento horizontal}
+\subsection{Sobre espaçamento horizontal}\label{sec:espacos}
 
 Nem todos os espaços são iguais. Não só variam em tamanho, mas possuem
 comportamentos distintos. Falaremos a seguir dos 
 \emph{espaços duros}\index{espacos duros@espaços duros}
 e de espaços um pouco mais largos, embora isso esteja longe de esgotar
 o assunto.\footnote{Espaço preenchido e espaço em branco estão em
-  constante interação em qualquer peça de composição visual.}
+  constante interação em qualquer peça de composição visual.} Falaremos dos espaços mais comuns no texto, como os que separam palavras. Algumas vezes (principalmente quando abordarmos a escrita de expressões matemáticas), outros tipos de espaçamento serão necessários. 
 
 Todo parágrafo justificado, isto é, que tem as margens direita e
-esquerda, exige que o espaçamento entre palavras seja ``elástico'',
+esquerda alinhadas verticalmente, exige que o espaçamento entre palavras seja ``elástico'',
 aumentando ou diminuindo conforme a necessidade. O \LaTeX\ possui um
-mecanismo elaborado para isso, que não descreveremos aqui. Ainda
+mecanismo interno elaborado para o gerenciamento desses espaços (que não descreveremos aqui). Ainda
 assim, é importante saber que alguns espaços são mais elásticos do que
 outros, e que os espaços comuns possuem limites de compressão e
 expansão.
 
-Por exemplo, espaçamento seguindo a pontuação de uma frase é mais
+Por exemplo, o espaço que segue o ponto final (ou a interrogação, ou a exclamação) em uma frase é mais
 elástico que o espaço que une as demais palavras. Mas como o fim de
 uma frase é identificado?
 
-Por padrão, o \LaTeX assume que um ponto final --- ou outra pontuação
+Por padrão, o \LaTeX\ assume que um ponto final --- ou outra pontuação
 como `?{}', ou `!{}', ou `\ldots'
 (reticências\index{reticencias@reticências} são produzidas usando o
 comando \verb'\ldots') --- marca o fim de uma
@@ -83,11 +83,14 @@ minúscula. Na maior parte dos casos esse comportamento é exatamente o
 que precisamos, mas nem sempre.
 
 Títulos como Dr.\ não terminam uma frase, na maior parte dos
-casos. Isso é resolvido usando `\verb*'Dr.\ ''. 
+casos. Isso é resolvido usando `\verb*'Dr.\ ''.\footnote{Como vimos na seção \ref{sec:palavras-de-controle}.}
 Por outro lado, existem casos em que uma letra maiúscula seguida de
 pontuação \emph{termina} uma frase: URSS\@. Para indicar que o ponto
-final após uma letra maiúscula termina a frase, correto?
+final após uma letra maiúscula termina a frase, existe o comando `\verb'\@'\thinspace', correto?
 \begin{center}\footnotesize
 \verb'Entendi, OK\@. A frase terminou no último ponto. E nesse também. E nesses.'
 \end{center}
+
+Falaremos agora dos espaços \emph{duros}. Existem palavras que estão naturalmente ligadas, e não toleram quebras de linha entre si. Isto acontece em expressões como ``seção~\ref{sec:espacos}'', ``Dr.\ House''. Frequentemente é preciso prestar atenção a expressões como ``Teorema de~Kuratowski'', ``Associação Contra os~Maus-tratos a~Espécies'', em que nem todos os espaços são duros, mas alguns são.
+Para produzir um espaço duro em \LaTeX, usa-se o til `\verb'~''. Por exemplo, ``\verb'5~cm'''. Com um pouco de prática se torna natural o a introdução desses espaços quando apropriado.
 
