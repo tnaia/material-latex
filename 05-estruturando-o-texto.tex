@@ -14,24 +14,61 @@ Neste capítulo, abordaremos, a título de exemplo, secionamento (segmentação)
 
 O exemplo a seguir ilustra o uso de seções, subseções, subsubseções, seções não numeradas\index{secao@seção} e apêndices.
 
-%\clearpage
+
 \medskip
-%\begin{center}\hrule\smallskip
-%\begin{tabular}{c|c}
-%\begin{minipage}{.405\textwidth}
 {\footnotesize\verbatiminput{exemplos/05-01-sectioning}}
-%\end{minipage}% &
-%\begin{minipage}{.535\textwidth}
-%\input{exemplos/05-01-sectioning}
-%\end{minipage}
-%\end{tabular}
-%\smallskip\hrule
-%\end{center}
+
 \medskip
 
-parte, capítulo, seção, subseção subsubseção, tableofcontents, seções
-são nmeradas, parâ\-metro opcional de seção
+Dizemos que uma seção inicia a partir do comando \verb'\section'. O
+argumento que este comando leva é o título da seção. O mesmo acontece
+para sub-seções, e as demais divisões do texto.
+
+Seções são numeradas por padrão. Para obter uma seção, sub-seção, etc. não numerada,
+use o respectivo comando em sua versão com asterisco, por
+exemplo \verb'\section*{Prefácio}'.
+
+A classe de documento e os pacotes que você usa definem quais os
+comandos de secionamento disponíveis. Livros, por exemplo, têm
+\verb'\chapter', relatórios têm \verb'\part', e por aí vai.
+
+Falemos agora do acompanhamento natural de um texto secionado:
+sumários (ou índices). Fazer um sumário\index{sumario@sumário}, com o
+\LaTeX\ é muito simples. Marque os títulos das partes usando os comandos de
+secionamento que acabamos de ver, e, no ponto do texto em que deseja
+acrescentar o índice, coloque o comando \verb'\tableofcontents'.
+
+Uma vez marcadas as seções do texto e solicitado o índice, o
+\LaTeX\ anota (em um arquivo auxiliar) as páginas em que começam as
+seções do texto, à medida que o processa. Essas informações
+são usadas para escrever o sumário. A depender da parte do
+texto na qual sumário foi posto, pode ser necessário processar o texto duas
+vezes (na primeira as páginas em que ocorrem as seções são anotadas, e
+na segunda as entradas no sumário são atualizadas com os valores
+corretos).
+
+Além das informações escritas no arquivo auxiliar (que tem a
+extensão~\extensao{aux}), o comando \verb'\tableofcontents' faz ser
+gerado um outro arquivo, com a extensão \extensao{toc} (\emph{table of
+  contents}), que contém o sumário em si. 
+
+É possível --- e igualmente fácil --- gerar listas de figuras, tabelas
+ou quaisquer outros elementos usando \LaTeX. Veremos como fazê-lo nas
+seções~\ref{sec:floats} e~\ref{sec:contadores}.\footnote{Para os
+  curiosos, a receita: basta usar  \texttt{\char`\\{}listoffigures}
+  e~\texttt{\char`\\{}listoftables} em conjunto com os ambientes
+  \ambiente{figure} e \ambiente{table}.}
 
 
-\section{Document proving the insight I had on a
-drunk night}
+Os comandos de secionamento possuem em geral um parâmetro opcional,
+que é uma versão ``mais compacta'' do título, para ser usada em no
+sumário (ou, por vezes, no cabeçalho ou rodapé de páginas).
+\begin{footnotesize}
+\begin{verbatim}
+\section[Prova Documental]{%
+  Documento provando a corretude do argumento %
+  que tive em uma longa insônia alcoolizada}
+\end{verbatim}
+\end{footnotesize}
+
+
