@@ -12,6 +12,8 @@ Você pode mesmo criar seu próprio nível hierárquico, como parágrafos, como 
 
 Neste capítulo, abordaremos, a título de exemplo, secionamento (segmentação) de um texto em artigos (documentos da classe~\pacote{article}). O comportamento apresentado em livros, relatórios etcétera é análogo, e em caso de dúvida basta recorrer aos manuais da respectiva classe (que, por padrão, vêm juntamente com o pacote quando a sua distribuição \LaTeX\ é instalada).
 
+\subsection{Marcando a anatomia}\label{sec:comandos-de-secionamento}
+
 O exemplo a seguir ilustra o uso de seções, subseções, subsubseções, seções não numeradas\index{secao@seção} e apêndices.
 
 
@@ -31,6 +33,8 @@ exemplo \verb'\section*{Prefácio}'.
 A classe de documento e os pacotes que você usa definem quais os
 comandos de secionamento disponíveis. Livros, por exemplo, têm
 \verb'\chapter', relatórios têm \verb'\part', e por aí vai.
+
+\subsection{Sumários}
 
 Falemos agora do acompanhamento natural de um texto secionado:
 sumários (ou índices). Fazer um sumário\index{sumario@sumário}, com o
@@ -71,4 +75,16 @@ sumário (ou, por vezes, no cabeçalho ou rodapé de páginas).
 \end{verbatim}
 \end{footnotesize}
 
+
+\subsection{Referenciando elementos do texto}
+
+Assim como sumários são elementos importantes para a orientação do leitor-explorador, existem outros tipos de referências que ocorrem com frequência. Outro modo de remeter o leitor a um trecho, página --- em geral, a um elemento --- do texto é usando \emph{referências}, que são o assunto desta seção.
+
+Há vários tipos de referências, e várias maneiras de se referir a alguma coisa. Podemos fazer referência a uma~\emph{figura} ou a um~\emph{capítlo}; assim como podemos identificá-los por um número próprio, ou pelo número da página em que se iniciam.\footnote{Outros tipos de referência incluem: referência a notas de rodapé e a elementos ``externos'', como itens de bibliografia, glossário e índices remissivos, que são explorados na seção~\ref{sec:biblio-indice-glossario}.} Em sua essência, porém, existem apenas dois elementos que estão necessariamente presentes: um \emph{indicador} e um \emph{indicado}.
+
+Para referenciar algo em \LaTeX, usamos \emph{rotulos}. Rótulos são nomes que damos a algum elemento do texto. Para criar um rótulo, use o comando \verb'\label{nome-do-rotulo}'\index{label@\verb'\label'}, e para referenciá-lo use o comando \verb'\ref{nome-do-rotulo}'\index{ref@\verb'\ref'}. 
+
+Quando usados em um ponto do texto, o label fica automaticamente associado à página, seção (subseção e etcétera) a que pertence aquele ponto no texto. Em enumerações, associa-se ainda ao elemento correspondente, e assim vale para figuras, tabelas e ambientes em geral.
+
+Note que o nome do rótulo não tem acentos. Quando criar seus rótulos, use apenas caracteres simples: mais especificamente, caracteres  \acronimo{ascii}\footnote{Entre os caracteres \acronimo{ascii} estão as letras de `\texttt{a}' a `\texttt{z}' (maiúsculas e minúsculas), os dígitos, o espaço em branco assim como os caracteres ``\texttt{`'"!@\#\$\%\&*()-\char`\_=+[]\char`\{\char`\}\^{}\~{},.;/\char`\\|<>?}''.}.
 
