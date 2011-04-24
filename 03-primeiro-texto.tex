@@ -333,11 +333,80 @@ personalizar cabeçalhos e rodapés, e mesmo
   pacotes. Esses pacotes geralmente são de um gênero mais técnico,
   parecendo às vezes ``coisa de programador.''}
 
-%\savebox{\mybox}{\protect\verb!\verb!}
-\subsection{%
-  \texorpdfstring{%
-  Verbatim: ambiente \ambiente{verbatim} e \texttt{\char`\\{}verb}}{%
-  Verbatim: ambiente verbatim e \textbackslash verb}}
+\subsection{Caracteres reservados}
+
+São dez os caracteres reservados pelo \LaTeX\ para funções especiais
+(ou seja, é preciso alguma ginástica para obtê-los). Eles são os seguintes.
+
+\begin{center}
+\verb'\   _   ^   ~   &   #   {   }   %   $'
+\end{center}
+
+A barra marca o início de um comando; o ``underscore'' e o circumflexo
+são usados no modo matemático (seção~\ref{sec:matematica}); o ``e
+comercial'' é usado em tabelas (seção~\ref{sec:tabelas}); o ``jogo da
+velha'' é usado na definição de comandos (seção~\ref{sec:comandos});
+as chaves agrupam texto; o caractere de porcentagem marca o início de
+comentários; e o cifrão delimita o modo matemático.
+
+Esses caracteres podem ser usados em um documento prefixando-os por
+uma barra.
+
+\medskip
+\begin{center}\footnotesize\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.465\textwidth}
+\verbatiminput{exemplos/03-verbatim-example-05}
+\end{minipage} &
+\begin{minipage}{.465\textwidth}
+\centering \input{exemplos/03-verbatim-example-05}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
+
+A exceção é a barra, que pode ser obtida  por meio do
+comando \verb'\textbackslash'.
+
+\subsection{Palavras de controle e texto}\label{sec:palavras-de-controle}
+
+Para construir um texto usamos aqui nada mais que palavras e comandos,
+simplesmente. Nesta seção veremos como eles se coordenam.
+
+Durante o processamento de seu texto, a maior parte do tempo o
+\LaTeX\ apenas encontra letras comuns, que prepara para colocar em um
+parágrafo. Algumas vezes, no entanto, ele encontra uma barra --- o que
+significa que uma sequência de controle foi encontrada. Se o caractere
+seguinte não for uma letra, trata-se de um 
+\emph{caractere de controle} (vide seção \ref{subsec:seq-controle}), e
+o \LaTeX\ continua processando o texto, levando em conta, claro, o
+significado do comando que encontrou. Já se após a barra há uma
+letra, o sistema se prepara para ler uma palavra de controle: continua
+a ler caracteres do texto até encontrar o primeiro caractere que não
+seja uma letra\footnote{Lembre-se: letras são os caracteres de
+  \texttt{a} a \texttt{z} e de \texttt{A} a \texttt{Z}.}. Se a palavra
+de controle é seguida de espaços em branco, \emph{eles são
+  ignorados}; e se ela é seguida de \emph{uma} quebra de linha, ela é
+ignorada também. O que acontece com mais quebras de linha?
+Experimente! Exercício: como você faria para escrever \TeX emplo?
+
+Se os espaços em branco são ignorados, como faço para que uma palavra
+de controle como \LaTeX\ seja seguida por um espaço (como foi aqui)?
+Os espaços são necessários após uma palavra de controle para definir
+seu fim --- caso contrário, o \LaTeX\ consideraria que \verb'\TeXemplo' é
+uma palavra de controle só. Mas qualquer coisa que permita ao sistema
+identificar que a palavra de controle terminou serve para o mesmo
+propósito. Assim, se você colocar um grupo vazio seguindo o comando
+(`\verb'\TeX{} emplo''), ou colocar um grupo envolvendo o comando
+(`\verb'{\TeX} emplo''), o espaço que segue o fim do grupo será
+preservado. Há ainda um outro modo, mais simples, de colocar um espaço
+logo depois de uma palavra de controle: basta usar o comando
+`\verb'\ '', que é uma barra seguida de um espaço. Esse comando
+simplesmente produz um espaço em branco, e podemos escrever
+`\verb'\TeX\ emplo'' para obter o \TeX\ emplo.
+
+\subsection{Text osem formatação}
 
 Por vezes o que queremos é que o texto digitado apareça exatamente
 como o escrevemos. Veremos a seguir que o \LaTeX\ toma algumas
@@ -350,9 +419,9 @@ que acontece\footnote{Não há resposta aqui \texttt{=)}.}?
 
 Em algumas situações, como por exemplo em listagens de programas, pode
 ser útil usar o \LaTeX\ como se ele não fosse mais do que uma máquina
-de escrever digital. Queremos que o texto seja posto \emph{verbatim},
-isto é, exatamente como foi escrito. Para isso, podemos usar (sic) o
-ambiente \verb'verbatim'.
+de escrever digital. Queremos que o texto seja posto
+\emph{verbatim}\index{verbatim}, isto é, exatamente como foi
+escrito. Para isso, podemos usar (sic) o ambiente \verb'verbatim'.
 
 \medskip
 \begin{center}\footnotesize\hrule\smallskip
@@ -514,42 +583,6 @@ dela se a palavra for usada novamente.
 \smallskip\hrule
 \end{center}
 \medskip
-
-\subsubsection{Caracteres reservados}
-
-São dez os caracteres reservados pelo \LaTeX\ para funções especiais
-(ou seja, é preciso alguma ginástica para obtê-los). Eles são os seguintes.
-
-\begin{center}
-\verb'\   _   ^   ~   &   #   {   }   %   $'
-\end{center}
-
-A barra marca o início de um comando; o ``underscore'' e o circumflexo
-são usados no modo matemático (seção~\ref{sec:matematica}); o ``e
-comercial'' é usado em tabelas (seção~\ref{sec:tabelas}); o ``jogo da
-velha'' é usado na definição de comandos (seção~\ref{sec:comandos});
-as chaves agrupam texto; o caractere de porcentagem marca o início de
-comentários; e o cifrão delimita o modo matemático.
-
-Esses caracteres podem ser usados em um documento prefixando-os por
-uma barra.
-
-\medskip
-\begin{center}\footnotesize\hrule\smallskip
-\begin{tabular}{c|c}
-\begin{minipage}{.465\textwidth}
-\verbatiminput{exemplos/03-verbatim-example-05}
-\end{minipage} &
-\begin{minipage}{.465\textwidth}
-\centering \input{exemplos/03-verbatim-example-05}
-\end{minipage}
-\end{tabular}
-\smallskip\hrule
-\end{center}
-\medskip
-
-A exceção é a barra, que pode ser obtida  por meio do
-comando \verb'\textbackslash'.
  
 \subsubsection[Ligaduras e Kerning]{Apurando os sentidos: ligaduras, kerning}% e história}
 
@@ -601,5 +634,46 @@ que varia de acordo com o entorno de cada caractere.
   Resumo de como o sistema ``monta'' as páginas
 \end{comment}
 
+
+\subsubsection{Sobre espaçamento horizontal}\label{sec:espacos}
+
+Nem todos os espaços são iguais. Não só variam em tamanho, mas possuem
+comportamentos distintos. Falaremos a seguir dos 
+\emph{espaços duros}\index{espacos duros@espaços duros}
+e de espaços um pouco mais largos, embora isso esteja longe de esgotar
+o assunto.\footnote{Espaço preenchido e espaço em branco estão em
+  constante interação em qualquer peça de composição visual.} Falaremos dos espaços mais comuns no texto, como os que separam palavras. Algumas vezes (principalmente quando abordarmos a escrita de expressões matemáticas), outros tipos de espaçamento serão necessários. 
+
+Todo parágrafo justificado, isto é, que tem as margens direita e
+esquerda alinhadas verticalmente, exige que o espaçamento entre palavras seja ``elástico'',
+aumentando ou diminuindo conforme a necessidade. O \LaTeX\ possui um
+mecanismo interno elaborado para o gerenciamento desses espaços (que não descreveremos aqui). Ainda
+assim, é importante saber que alguns espaços são mais elásticos do que
+outros, e que os espaços comuns possuem limites de compressão e
+expansão.
+
+Por exemplo, o espaço que segue o ponto final (ou a interrogação, ou a exclamação) em uma frase é mais
+elástico que o espaço que une as demais palavras. Mas como o fim de
+uma frase é identificado?
+
+Por padrão, o \LaTeX\ assume que um ponto final --- ou outra pontuação
+como `?{}', ou `!{}', ou `\ldots'
+(reticências\index{reticencias@reticências} são produzidas usando o
+comando \verb'\ldots') --- marca o fim de uma
+frase sempre que, e somente quando, for precedida por uma letra
+minúscula. Na maior parte dos casos esse comportamento é exatamente o
+que precisamos, mas nem sempre.
+
+Títulos como Dr.\ não terminam uma frase, na maior parte dos
+casos. Isso é resolvido usando `\verb*'Dr.\ ''.\footnote{Como vimos na seção \ref{sec:palavras-de-controle}.}
+Por outro lado, existem casos em que uma letra maiúscula seguida de
+pontuação \emph{termina} uma frase: URSS\@. Para indicar que o ponto
+final após uma letra maiúscula termina a frase, existe o comando `\verb'\@'\thinspace', correto?
+\begin{center}\footnotesize
+\verb'Entendi, OK\@. A frase terminou no último ponto. E nesse também. E nesses.'
+\end{center}
+
+Falaremos agora dos espaços \emph{duros}. Existem palavras que estão naturalmente ligadas, e não toleram quebras de linha entre si. Isto acontece em expressões como ``seção~\ref{sec:espacos}'', ``Dr.\ House''. Frequentemente é preciso prestar atenção a expressões como ``Teorema de~Kuratowski'', ``Associação Contra os~Maus-tratos a~Espécies'', em que nem todos os espaços são duros, mas alguns são.
+Para produzir um espaço duro em \LaTeX, usa-se o til `\verb'~''. Por exemplo, ``\verb'5~cm'''. Com um pouco de prática se torna natural o a introdução desses espaços quando apropriado.
 
 

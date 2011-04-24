@@ -12,6 +12,22 @@ Você pode mesmo criar seu próprio nível hierárquico, como parágrafos, como 
 
 Neste capítulo, abordaremos, a título de exemplo, secionamento (segmentação) de um texto em artigos (documentos da classe~\pacote{article}). O comportamento apresentado em livros, relatórios etcétera é análogo, e em caso de dúvida basta recorrer aos manuais da respectiva classe (que, por padrão, vêm juntamente com o pacote quando a sua distribuição \LaTeX\ é instalada).
 
+\subsection{Títulos, autor e data de documentos}
+
+Em muitas classes de documentos, estão disponíveis os comandos para
+definir o título, o(s) autor(es) e a data do documento. Cada classe
+exibe essa informação de um modo, mas em boa parte delas você define o
+título com um comando \verb'\title{Minhas Férias}', o autor usando o
+comando \verb'\author{YoMoiIchEu}'. A data é composta automaticamente
+com a data em que o documento for processado (no idioma do
+documento). Você pode escolher a data usando o comando
+\verb'\date{Muito, muito tempo atrás}'.
+
+Depois de especificados o título e o autor (mais de um autor pode ser
+declarado, separando-se seus nomes por \verb'\and'), você escolhe o
+ponto do texto no qual quer que apareçam, e usa o comando
+\verb'\maketitle'. Voilà!
+
 \subsection{Marcando a anatomia}\label{sec:comandos-de-secionamento}
 
 O exemplo a seguir ilustra o uso de seções, subseções, subsubseções, seções não numeradas\index{secao@seção} e apêndices.

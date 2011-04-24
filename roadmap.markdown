@@ -25,7 +25,6 @@ no material. Está sujeita a alterações!
     -   texto sem formatação !!! era verbatim
     -   Alguma tipografia
         *    hifens & cia
-        *    caracteres reservados
         *    ligaduras e kerning
         *    sobre espaçamento horizontal   
 *    Estruturando o texto
