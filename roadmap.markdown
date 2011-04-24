@@ -56,6 +56,7 @@ no material. Está sujeita a alterações!
    - parbox, minipage, rule, reusing boxes
   - Arquivos auxiliares (toc, lof, lot)
   - Contadores
+  - comandos frágeis ou processando várias vezes
 * Bibliografia & cia: Bibtex !!! ref. bibliográficas
 * índices remissivos & cia: Makeindex !!! glossários tb
 * E agora José?
