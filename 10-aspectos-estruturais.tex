@@ -1,0 +1,72 @@
+\section{Aspectos estruturais}
+
+\subsection{A construção da página}
+\subsubsection{Anatomia da página}
+
+notas de rodapé, notas marginais, cabeçalho, número de página
+
+\subsection{Parágrafos marginais}
+
+Usar \marginpar{\raggedleft\footnotesize notas marginais} notas
+marginais no texto pode ser uma maneira interessante de destacar algum
+conceito. O comando \verb'\marginpar{parágrafo}' acrescenta um
+parágrafo à margem do parágrafo atual. É possível mudar drasticamente
+a aparência de um parágrafo lateral (assim como de qualquer outro tipo
+de parágrafo): diminuir a fonte em que é escrito, deixá-lo rasgado à
+direita ou esquerda (seção~\ref{sec:alinhamento}) ou à direita,
+envolvê-lo em uma caixa,
+rotacioná-lo\marginpar{\raggedleft\rotatebox{90}{\footnotesize\it
+    $\mathcal{A}$ssim.}}, etc. --- em suma, qualquer
+transformação. Por exemplo, parágrafos de páginas pares e ímpares são
+por padrão colocados de modo a que estejam na lateral da folha que
+ficaria ``para fora'' caso o texto seja encadernado. Esse
+comportamento, para ser mais preciso, depende de algumas definições na
+classe do documento.\footnote{Por exemplo, se   você está usando
+  alguma  classe de documento padrão, como~\classedoc{article}
+  ou~\classedoc{book}, a opção \parametro{twoside} implica que o
+  documento será impresso frente-e-verso, o que geralmente implica que
+  parágrafos marginais serão colocados à direita ou esquerda
+  dependendo de a página a que pertencem ser par ou ímpar (a
+  opção~\parametro{oneside} faz todo paragrafo marginal aparecer no
+  mesmo lado da página).}
+
+\begin{center}\footnotesize\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.47\textwidth}
+\begin{verbatim}
+Houve um tempo\footnote{Por volta de 1920.} 
+em que as pessoas viviam como se estivessem 
+na década de 20.
+\end{verbatim}
+\vfill
+\end{minipage} &
+\begin{minipage}{.47\textwidth}
+Houve um tempo\footnote{Por volta de 1920.} em
+que as pessoas viviam como se estivessem na 
+década de 20.
+\vspace*{1cm}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+
+clearpage, newpage
+
+\subsubsection{Caixas}
+
+\subsubsection{Medidas}
+
+comprimentos  (medidas, medindo coisas, criando seus próprios
+comprimentos)
+
+espaços
+
+pacote \verb!geometry!, \verb!multicolumn!
+
+\subsubsection{Encaixotando}
+
+\subsection{Arquivos auxiliares}
+
+\subsection{Contadores}\label{sec:contadores}
+
+\subsection{Comandos frágeis}

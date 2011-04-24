@@ -48,3 +48,110 @@ itemise, enumerate, description, quotation
 \end{tabular}
 \smallskip\hrule
 \end{center}
+
+\subsection{Alinhamento}\label{sec:alinhamento}
+
+Boa parte dos textos possui alinhamento justificado, i.e., possui
+ambas as margens retas e paralelas. Nem sempre isso é
+desejado. Existem muitas maneiras de definir o alinhamento do texto:
+falamos de duas delas aqui.
+
+\subsection{Texto não-justificado}
+
+\begin{flushleft}
+No ambiente
+\ambiente{flushleft}\index{flushleft@\ambiente{flushleft}}, o texto é
+``empurrado'' para a esquerda. Os espaços não são nem esticados nem
+comprimidos. O efeito resultante são linhas de comprimento variável, o
+que por vezes é uma opção interessante de diagramação.
+\end{flushleft}
+
+\begin{flushright}
+Simetricamente,
+\ambiente{flushright}\index{flushright@\ambiente{flushright}} tem o
+comportamento esperado, fazendo com que o texto no ambiente em
+questão, a partir do parágrafo em que aparece, fique com a
+esquerda~\emph{rasgada} --- ou seja, para a direita.
+\end{flushright}
+
+\subsection{Elementos flutuantes}\label{sec:floats}
+
+Tipógrafos atentam para uma série de características na disposição do
+texto que frequentemente passam despercebidas ao nosso consciente. Uma
+delas é o equilíbrio entre o texto que se espalha pelas páginas e os
+demais elementos, como figuras e tabelas, que pontuam a paisagem aqui
+e ali. 
+
+O \LaTeX\ toma várias precauções na disposição desses elementos,
+ditos~\emph{flutuantes} (porque sua posição não é fixa no texto como a
+de uma palavra em uma frase). É como se os elementos fossem troncos de
+árvore à deriva sobre a correnteza de palavras que compõe o texto.
+
+Figuras e tabelas são somente alguns exemplos de elementos
+flutuantes. Eles são ambientes (respectivamente~\ambiente{figure}
+e~\ambiente{table}) que encapsulam o conteúdo que irá flutuar.
+
+% colocar exemplo usando caption
+% enfatizar que o latex sabe onde colocar as imagens
+% opções de posicionamento
+% todo: como se insere no mecanismo de composição de página
+
+\subsubsection{Figuras}
+
+Figuras são uma ferramenta poderosa na composição de textos, quando
+usadas com parcimônia. É possível colocar imagens no documento dizendo
+ao \LaTeX\ sua localização (ou apenas seu nome, se estiverem na mesma
+pasta que o documento). Também é possível desenhar usando o próprio
+\LaTeX, por exemplo, com o pacote \pacote{Tikz}.
+
+Para colocar figuras em um documento \LaTeX, basta usar o comando
+\begin{center}
+\verb!\includegraphics{nome-do-arquivo}!
+\end{center}
+em que a extensão do tipo de arquivo não precisa ser incluída. Mas
+atenção: nem toda extensão de imagem é conhecida pelo
+\LaTeX\ nativamente, embora basta usar um pacote para superar o
+problema, na maior parte dos casos. Acrescente
+\verb!\usepackage{graphicx}! no preâmbulo de seu documento e você
+poderá incluir imagens \extensao{png}, \extensao{jpg} e
+\extensao{pdf}, para citar algumas.
+
+\begin{figure}
+  \begin{center}
+    \input{exemplos-externos/tikz-01}
+    \caption{Uma figura gerada com o pacote \pacote{Tikz}.}\label{fig:tikz:piramide-cortada}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}
+  \begin{center}
+    \input{exemplos-externos/tikz-02}
+    \caption{Outra figura gerada com o pacote \pacote{Tikz}.}\label{fig:tikz:layers}
+  \end{center}
+\end{figure}
+
+\subsubsection{Tabelas}\label{sec:tabelas}
+
+\begin{center}
+\begin{tabular}{clcr|r|}
+  a & b & c & d & e\\
+  f & g & h & i & j\\
+  \hline
+  k & l & m & n & o
+\end{tabular}
+\end{center}
+
+
+\begin{table}\centering
+  \caption{Gastos {\it \&} despesas / 1º semestre}
+
+  \begin{tabular}{crrrrrrl}
+    mês & jan & fev & mar & abr & mai & jun & total\\
+    \hline
+  receita & $10$ & $0$ & $5$ & $20$ & $12$ & $13$ & $60$\\
+  gastos  & $-3$ & $-4$ & $-3$ & $-3$ & $-5$ & $-3$ & $-21$ \\
+  \hline
+  balanço & $7$ & $-4$ & $2$ & $17$ & $7$ & $10$ & $39$\\
+  \end{tabular}
+\end{table}
