@@ -24,10 +24,10 @@ no material. Está sujeita a alterações!
   - palavras de controle e texto !!!
   - texto sem formatação !!! era verbatim
   - Alguma tipografia
-   - hifens & cia
-   - caracteres reservados
-   - ligaduras e kerning
-   - sobre espaçamento horizontal   
+    - hifens & cia
+    - caracteres reservados
+    - ligaduras e kerning
+    - sobre espaçamento horizontal   
 * Estruturando o texto
   - título, autor e data
   - marcando a anatomia
@@ -39,8 +39,8 @@ no material. Está sujeita a alterações!
   - listas !!! itemize, enumerate, description, quotation, flushleft,
   flushright (era "alguns elementos")
   - elementos flutuantes
-   - figuras
-   - tabelas
+    - figuras
+    - tabelas
 * Personalizando
   - definindo comandos
   - definindo ambientes
@@ -49,11 +49,11 @@ no material. Está sujeita a alterações!
 * Matemática
 * Aspectos estruturais
   - A construção da página
-   - anatomia da página: margens, cabeçalho, (notas de) rodapé
-   - caixas: a construção de linhas, parágrafos, e páginas (quebras de
-   página, odd e even, referência a fancyhdr, poster, memoir, beamer)
-   - medidas
-   - parbox, minipage, rule, reusing boxes
+    - anatomia da página: margens, cabeçalho, (notas de) rodapé
+    - caixas: a construção de linhas, parágrafos, e páginas (quebras de
+    página, odd e even, referência a fancyhdr, poster, memoir, beamer)
+    - medidas
+    - parbox, minipage, rule, reusing boxes
   - Arquivos auxiliares (toc, lof, lot)
   - Contadores
   - comandos frágeis ou processando várias vezes
