@@ -2,10 +2,10 @@
 
 Textos, assim como animais, possuem uma anatomia. Essa anatomia é o que permite ao leitor se localizar em sua leitura, identificar algo que procura. A estrutura do texto, além disso, carrega uma mensagem em si, ao menos em potencial, ao refletir o encadeamento do texto.
 
-A depender da classe do documento, há uma certa variedade de tipos de segmentações à nossa disposição para organizar o texto.
+A depender da classe do documento, há uma certa variedade de tipos de segmentações à nossa disposição para organizar o texto.\footnote{E, como tudo o mais quando se trata da família \TeX, esse conjunto pode ser estendido e modificado como melhor nos aprouver.}
 Artigos podem ser particionados em seções, subseções, subsubseções, apêndices.
 Livros possuem, adicionalmente ao que está disponível em artigos, capítulos (contendo um certo número de seções).
-Relatórios possuem adicionalmente (a livros) \emph{partes}, (que contém capítulos).
+Relatórios possuem adicionalmente (a livros) \emph{partes} (que contém capítulos).
 E por aí vai.
 
 Você pode mesmo criar seu próprio nível hierárquico, como parágrafos, como veremos na seção~\ref{sec:contadores}.
@@ -20,7 +20,7 @@ exibe essa informação de um modo, mas em boa parte delas você define o
 título com um comando \verb'\title{Minhas Férias}', o autor usando o
 comando \verb'\author{YoMoiIchEu}'. A data é composta automaticamente
 com a data em que o documento for processado (no idioma do
-documento). Você pode escolher a data usando o comando
+documento). Você pode escolher (fixar) a data usando o comando
 \verb'\date{Muito, muito tempo atrás}'.
 
 Depois de especificados o título e o autor (mais de um autor pode ser
@@ -62,11 +62,9 @@ Uma vez marcadas as seções do texto e solicitado o índice, o
 \LaTeX\ anota (em um arquivo auxiliar) as páginas em que começam as
 seções do texto, à medida que o processa. Essas informações
 são usadas para escrever o sumário. A depender da parte do
-texto na qual sumário foi posto, pode ser necessário processar o texto duas
-vezes (na primeira as páginas em que ocorrem as seções são anotadas, e
+texto na qual sumário foi posto, pode ser necessário processar o texto duas vezes\footnote{Para sermos estritamente precisos, é possível construir documentos anômalos que ``ludibriam'' o índice e requerem mais processamento, mas não se preocupe: se seu texto tiver essa propriedade, certamente você a terá causado conscientemente.} (na primeira as páginas em que ocorrem as seções são anotadas, e
 na segunda as entradas no sumário são atualizadas com os valores
 corretos).
-
 Além das informações escritas no arquivo auxiliar (que tem a
 extensão~\extensao{aux}), o comando \verb'\tableofcontents' faz ser
 gerado um outro arquivo, com a extensão \extensao{toc} (\emph{table of
@@ -87,14 +85,14 @@ sumário (ou, por vezes, no cabeçalho ou rodapé de páginas).
 \begin{verbatim}
 \section[Prova Documental]{%
   Documento provando a corretude do argumento %
-  que tive em uma longa insônia alcoolizada}
+  que concebi em uma longa insônia alcoolizada}
 \end{verbatim}
 \end{footnotesize}
 
 
 \subsection{Referenciando elementos do texto}
 
-Assim como sumários são elementos importantes para a orientação do leitor-explorador, existem outros tipos de referências que ocorrem com frequência. Outro modo de remeter o leitor a um trecho, página --- em geral, a um elemento --- do texto é usando \emph{referências}, que são o assunto desta seção.
+Assim como sumários são elementos importantes para a orientação do leitor-explorador, existem outros tipos de referências que ocorrem com frequência. Outro modo de remeter o leitor a um trecho, página --- em geral, a um \emph{elemento} qualquer --- do texto é usando \emph{referências}, que são o assunto desta seção.
 
 Há vários tipos de referências, e várias maneiras de se referir a
 alguma coisa. Podemos fazer referência a uma~\emph{figura} ou a
@@ -104,12 +102,12 @@ próprio, ou pelo número da página em que se iniciam.\footnote{Outros
   elementos ``externos'', como itens de bibliografia, glossário e
   índices remissivos, que são explorados nas seções~\ref{sec:biblio} 
   e~\ref{sec:indice-glossario}.} Em sua essência, porém, existem
-apenas dois elementos que estão necessariamente presentes: um
+apenas dois componentes imprescindíveis em uma referência: um
 \emph{indicador} e um \emph{indicado}.
 
-Para referenciar algo em \LaTeX, usamos \emph{rotulos}. Rótulos são nomes que damos a algum elemento do texto. Para criar um rótulo, use o comando \verb'\label{nome do rotulo}'\index{label@\verb'\label'}, e para referenciá-lo use o comando \verb'\ref{nome do rotulo}'\index{ref@\verb'\ref'}. 
+Para referenciar algo em \LaTeX, usamos \emph{rótulos}. Rótulos são nomes que damos a algum elemento do texto. Para criar um rótulo, use o comando \verb'\label{nome do rotulo}'\index{label@\verb'\label'}, e para referenciá-lo use o comando \verb'\ref{nome do rotulo}'\index{ref@\verb'\ref'}. 
 
-Quando usados em um ponto do texto, o label fica automaticamente associado à página, seção (subseção e etcétera) a que pertence aquele ponto no texto. Em enumerações, associa-se ainda ao elemento correspondente, e assim vale para figuras, tabelas e ambientes em geral.
+Quando usados em um ponto do texto, o label fica automaticamente associado à página, seção (subseção e etcétera) a que pertence aquele ponto no texto. Em enumerações, associa-se ainda ao item correspondente, e assim vale para figuras, tabelas e ambientes em geral.
 
-Note que o nome do rótulo não tem acentos. Quando criar seus rótulos, use apenas caracteres simples: mais especificamente, caracteres  \acronimo{ascii}\footnote{Entre os caracteres \acronimo{ascii} estão as letras de `\texttt{a}' a `\texttt{z}' (maiúsculas e minúsculas), os dígitos, o espaço em branco assim como os caracteres ``\texttt{`'"!@\#\$\%\&*()-\char`\_=+[]\char`\{\char`\}\^{}\~{},.;/\char`\\|<>?}''.}.
+Note que no exemplo o nome do rótulo não tem acentos. Quando criar seus rótulos, use apenas caracteres simples: mais especificamente, caracteres  \acronimo{ascii}\footnote{Entre os caracteres \acronimo{ascii} estão as letras de `\texttt{a}' a `\texttt{z}' (maiúsculas e minúsculas), os dígitos, o espaço em branco, assim como os caracteres ``\texttt{@\#\$\%\&*`'"!()-\char`\_=+[]\char`\{\char`\}\^{}\~{},.;/\char`\\|<>?}''.}.
 
