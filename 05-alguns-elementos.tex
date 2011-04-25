@@ -62,16 +62,14 @@ falamos de duas delas aqui.
 No ambiente
 \ambiente{flushleft}\index{flushleft@\ambiente{flushleft}}, o texto é
 ``empurrado'' para a esquerda. Os espaços não são nem esticados nem
-comprimidos. O efeito resultante são linhas de comprimento variável, o
-que por vezes é uma opção interessante de diagramação.
+comprimidos. O efeito resultante são linhas de comprimento variável, 
+ por vezes uma opção interessante de diagramação.
 \end{flushleft}
 
 \begin{flushright}
 Simetricamente,
 \ambiente{flushright}\index{flushright@\ambiente{flushright}} tem o
-comportamento esperado, fazendo com que o texto no ambiente em
-questão, a partir do parágrafo em que aparece, fique com a
-esquerda~\emph{rasgada} --- ou seja, para a direita.
+comportamento que seria de se esperar, fazendo  parágrafos  ficarem com a esquerda~\emph{rasgada}, isto é, sejam empurrados para a direita.
 \end{flushright}
 
 \subsection{Elementos flutuantes}\label{sec:floats}
@@ -111,7 +109,7 @@ Para colocar figuras em um documento \LaTeX, basta usar o comando
 \end{center}
 em que a extensão do tipo de arquivo não precisa ser incluída. Mas
 atenção: nem toda extensão de imagem é conhecida pelo
-\LaTeX\ nativamente, embora basta usar um pacote para superar o
+\LaTeX\ nativamente, embora baste usar um pacote para superar o
 problema, na maior parte dos casos. Acrescente
 \verb!\usepackage{graphicx}! no preâmbulo de seu documento e você
 poderá incluir imagens \extensao{png}, \extensao{jpg} e
@@ -134,14 +132,36 @@ poderá incluir imagens \extensao{png}, \extensao{jpg} e
 
 \subsubsection{Tabelas}\label{sec:tabelas}
 
+Tabelas são um dos maiores desafios de diagramação que têm que ser enfrentados frequentemente por tipógrafos. Cada tabela é única, e uma leve alteração de espaçamento tem o poder de alterar bastante o destaque de uma e outra informação.
+
+\medskip
+\begin{center}\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.405\textwidth}\footnotesize
+\verbatiminput{exemplos/05-tabela-01}
+\end{minipage} &
+\begin{minipage}{.535\textwidth}
+\input{exemplos/05-tabela-01}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
+
+
 \begin{center}
-\begin{tabular}{clcr|r|}
-  a & b & c & d & e\\
-  f & g & h & i & j\\
-  \hline
-  k & l & m & n & o
+\begin{tabular}{llr}
+\toprule
+\multicolumn{2}{c}{Name} \\
+\cmidrule(r){1-2}
+First name & Last Name & Grade \\
+\midrule
+John & Doe & $7.5$ \\
+Richard & Miles & $2$ \\
+\bottomrule
 \end{tabular}
 \end{center}
+
 
 
 \begin{table}\centering

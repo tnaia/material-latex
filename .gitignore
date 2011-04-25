@@ -6,5 +6,7 @@
 *.ilg
 *.ind
 *.toc
+*.bbl
+*.blg
 apostila.pdf
 \#*\#

@@ -1,8 +1,6 @@
-apostila.pdf: *.tex */*.tex
-	pdflatex apostila.tex
-	pdflatex apostila.tex
-	makeindex apostila
-	pdflatex apostila.tex
+apostila.pdf: *.tex */*.tex *.bib
+	pdflatex apostila
+	bibtex apostila
 	makeindex apostila
 	pdflatex apostila.tex
 	pdflatex apostila.tex
