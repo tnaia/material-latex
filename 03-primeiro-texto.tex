@@ -14,7 +14,7 @@ Uma primeira diferença das máquinas de escrever é o espaçamento. Muitos text
 \begin{minipage}{.405\textwidth}\footnotesize
 \verbatiminput*{exemplos/03-espacos-01}
 \end{minipage} &
-\begin{minipage}{.535\textwidth}
+\begin{minipage}{.535\textwidth}\setlength{\parindent}{1pc}
 \input{exemplos/03-espacos-01}
 \end{minipage}
 \end{tabular}
@@ -134,6 +134,23 @@ ser-lhe bem familiar. Em nosso exemplo, o comentário é
 
 Comentários iniciam-se por um caractere `\verb.%.', e vão até o fim da
 linha. Eles são ignorados pelo \LaTeX: são anotações no texto que o autor pode fazer para lembrar-se de algo ou temporariamente remover um trecho do texto, por exemplo.
+
+Um detalhe importante: todo o texto que faz parte do comentário é como se não existisse para o \LaTeX\ quando ele processa o texto: tudo o que está entre o caractere `\verb`%`' e a primeira quebra de linha é ignorado, incluindo o caractere de porcentagem e a quebra de linha!
+
+\medskip
+\begin{center}\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.405\textwidth}\footnotesize
+\verbatiminput{exemplos/03-comentario-e-quebra-de-linha-01}
+\end{minipage} &
+\begin{minipage}{.535\textwidth}
+\input{exemplos/03-comentario-e-quebra-de-linha-01}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
+
 
 \subsection{Parâmetros}
 
