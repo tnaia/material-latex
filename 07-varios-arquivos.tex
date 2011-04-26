@@ -1,3 +1,15 @@
 \section[Múltiplos arquivos]{Projetos com vários arquivos}
 
-input, include, includeonly
+Nem todas as pessoas já tiveram a experiência de trabalhar em projetos em que vários arquivos de texto são necessários --- donde o título desta seção pode soar estranho. Aqui discutiremos como (e por que) separar um documento em arquivos diferentes, que geram ao final um mesmo~\extensao{pdf} ou~\extensao{dvi}.
+
+Há diversas situções em que é vantajoso ter um texto em vários pedaços. Uma bastante comum é o reuso. Dependendo do tipo de documento que você costuma escrever, determinados conjuntos de pacotes serão imprescindíveis, e você se verá acrescentando sempre os mesmos e definindo os mesmos comandos várias vezes ao dia. Mantendo um arquivo com o seu preâmbulo, você só precisa dizer ao \LaTeX\ (uma vez) onde encontrá-lo.
+
+Arquivos menores são mais fáceis e rápidos de transmitir, imprimir, e de editar (é rápido encontrar o lugar no texto que se quer modificar). Ganha-se ainda em organização: em trabalhos de médio e grande porte, não se pode menosprezar o benefício de ter arquivos relacionados agrupados em uma mesma pasta. Essa vantagem é crucial se há mais de uma pessoa participando do projeto.
+
+Uma possibilidade que a quebra em arquivos traz é processar apenas parte do documento por vez. (A ``compilação'' de um projeto complexo pode levar alguns minutos --- e podem ser necessárias várias iterações  seguidas durante revisões e restruturações.)
+
+Alguma separação, é inevitável. Os pacotes, e classes de documento, por exemplo, são arquivos de texto que são incluídos no seu texto de modo controlado. Listas de figuras e o sumário são outros exemplos. Muitas vezes você irá acrescentar imagens, que apesar de não serem arquivos de texto, são arquivos externos ao documentos que a ele são acrescentados durante o processamento.
+
+\subsection{\texttt{\char`\\input}}
+\subsection{\texttt{\char`\\include\textrm{ e }\char`\\includeonly}}
+
