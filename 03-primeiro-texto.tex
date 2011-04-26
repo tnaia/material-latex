@@ -1,11 +1,28 @@
 \section{Primeiro documento}
 
 
-\subsection{Texto e sequências de controle}\label{subsec:seq-controle}
+\subsection{Texto e sequências de controle}\label{sec:seq-controle}
 
 Quando você escreve um texto~\LaTeX, a maior parte do tempo você está
-escrevendo como se usasse uma máquina de escrever
-comum. Eventualmente, no entanto, você desejará acrescentar algo ao
+escrevendo como se usasse uma máquina de escrever comum (talvez você nunca tenha usado uma, mas provavelmente pode imaginar como é). Mas não todo o tempo. 
+
+Uma primeira diferença das máquinas de escrever é o espaçamento. Muitos textos são feitos de modo que formem retângulos na página (o afamado \emph{alinhamento justificado}. Mas para que as linhas tenham o mesmo comprimento, é preciso hifenar\footnote{Vide seção~\ref{sec:hifenacao}.} algumas palavras (ou seja quebrá-las), e ainda alargar ou comprimir ligeiramente o espaço entre as palavras (essa é uma tarefa complicada, que o \LaTeX\ desempenha exemplarmente). Não é surpresa que o sistema tenha um modo diferente de lidar com o espaçamento que colocamos no texto do que outros sistemas. Por exemplo, colocar um espaço entre palavras faz com que elas fiquem separadas por um espaço (até aí, nenhuma surpresa). Mas colocar dois, três, ou cinquenta espaços entre um par de palavras tem o mesmo efeito que colocar apenas um. E mais: quebrar a linha no texto não causa uma quebra de linha no texto final. Observe atentamente o exemplo abaixo. O caractere `\texttt{\textvisiblespace}' indica um espaço em branco.
+
+\medskip
+\begin{center}\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.405\textwidth}\footnotesize
+\verbatiminput*{exemplos/03-espacos-01}
+\end{minipage} &
+\begin{minipage}{.535\textwidth}
+\input{exemplos/03-espacos-01}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
+
+Até o momento, falamos de texto puro e simples. Caracteres e espaços. Eventualmente, no entanto, você desejará acrescentar algo ao
 texto além de palavras. Pode ser que queira \emph{enfatizar alguma
   passagem}, ou
 
@@ -39,7 +56,7 @@ caracteres `\texttt{A}' a `\texttt{Z}', e `\texttt{a}' a
 de sequência de controle, que chamaremos aqui de \emph{caractere de controle}
 (control character), que consiste de uma barra seguida de um caractere
 não-letra, por exemplo `\verb|\-|', e `\verb|\{|' (a função dessas
-sequências será explicada nas seções \ref{subsec:hifenacao} e
+sequências será explicada nas seções \ref{sec:hifenacao} e
 \ref{sec:matematica}).
 
 Naturalmente, surge a pergunta: mas e se eu quiser usar uma
@@ -112,12 +129,11 @@ comentário (como aliás muitas outras que abordaremos aqui)  deve
 ser-lhe bem familiar. Em nosso exemplo, o comentário é 
 
 \begin{center}
-  \it Colocar um conteúdo de verdade.
+  \textit{Colocar um conteúdo de verdade.}
 \end{center}
 
 Comentários iniciam-se por um caractere `\verb.%.', e vão até o fim da
-linha. Comentários são anotações no texto que o autor pode fazer para
-lembrar-se de alguma coisa, embora possam ter outros usos.
+linha. Eles são ignorados pelo \LaTeX: são anotações no texto que o autor pode fazer para lembrar-se de algo ou temporariamente remover um trecho do texto, por exemplo.
 
 \subsection{Parâmetros}
 
@@ -407,7 +423,7 @@ logo depois de uma palavra de controle: basta usar o comando
 simplesmente produz um espaço em branco, e podemos escrever
 `\verb'\TeX\ emplo'' para obter o \TeX\ emplo.
 
-\subsection{Text osem formatação}
+\subsection{Texto sem formatação}
 
 Por vezes o que queremos é que o texto digitado apareça exatamente
 como o escrevemos. Veremos a seguir que o \LaTeX\ toma algumas
@@ -494,7 +510,7 @@ por objetivo facilitar a identificação visual do novo parágrafo, o que
 não é necessário se o parágrafo é o primeiro de uma seção ou capítulo
 do texto, por exemplo.
 
-Encontramos pela primeira vez também os comandos \verb'\LaTeX', que
+Encontramos também os comandos \verb'\LaTeX', que
 escreve \LaTeX, e \verb'\emph', que \emph{enfatiza} o texto que lhe é
 passado como parâmetro. Note que o que o comando faz é enfatizar: o
 jeito como ele faz isso não é a nossa preocupação nesse momento.
@@ -524,10 +540,10 @@ novas direções, e muito provavelmente você se surpreenderá com a
 influência que ``detalhes'' têm no ritmo e facilidade de leitura de um
 texto. Mãos à obra!
 
-\subsubsection{Hífens e hifenação}\label{subsec:hifenacao}
+\subsubsection{Hífens e hifenação}\label{sec:hifenacao}
 
 Muito embora haja apenas um tipo de hífen em seu teclado, existem
-muito mais hífens na tipogravia. Há aquele usado em palavras
+muito mais hífens na tipografia. Há aquele usado em palavras
 compostas, como ``guarda-chuva'' ou ainda ``resguardar-se'', e que também
 servem para marcar a quebra de uma palavra no fim de uma linha
 (sua \emph{hifenação}); há o traço usado para indicar um intervalo de números,
@@ -608,8 +624,7 @@ abaixo.
 \medskip
 
 Ligaduras (do inglês, \emph{ligatures}), ocorrem quando um agrupamento
-de letras é substituído por um outro símbolos, quer para melhorar sua
-legibilidade, quer para tornar o texto mais belo.
+de letras é substituído por algum outro símbolo, quer para melhorar sua legibilidade, quer para tornar o texto mais belo.
 
 Já o \emph{kerning} é um aumento ou diminuição do espaço entre letras,
 que varia de acordo com o entorno de cada caractere.
