@@ -1,11 +1,21 @@
 \section{Alguns elementos do texto}
 
+Aqui veremos exemplos de três ambientes qeu delimitam construções
+comuns em textos: listas (de vários tipos), trechos com lateral
+rasgada (não-justificados), e elementos ``flutuantes''.
+
 \subsection[Listas]{Listas {\it \&} Cia.}
 
-itemise, enumerate, description, quotation
+Listas encarnam uma função que é misto de destaque e segregação. A um
+só tempo, o conteúdo de uma lista é apartado da corrente do texto,
+enquanto que cada um de seus itens tem sua unidade e individualidade
+reforçadas, como você pode ver experimentando com os exemplos abaixo.
+Eles mostram, respectivamente, listas\index{listas}
+não-numeradas\index{listas!nao numeradas@não numeradas} e
+numeradas\index{listas!numeradas} e descrições.
 
 \begin{center}\footnotesize\hrule\smallskip
-\begin{tabular}{c|c}
+\begin{tabular}{cc}
 \begin{minipage}{.465\textwidth}
 \begin{verbatim}
 \begin{itemize}
@@ -23,12 +33,33 @@ itemise, enumerate, description, quotation
 \end{itemize}
 \end{minipage}
 \end{tabular}
-\smallskip\hrule
+\smallskip
 \end{center}
 
+\begin{center}\footnotesize\smallskip
+\begin{tabular}{cc}
+\begin{minipage}{.465\textwidth}
+\begin{verbatim}
+\begin{enumerate}
+\item cebola,
+\item açafrão, e
+\item alho.
+\end{enumerate}
+\end{verbatim}
+\end{minipage} &
+\begin{minipage}{.465\textwidth}
+\begin{enumerate}
+\item cebola,
+\item açafrão, e
+\item alho.
+\end{enumerate}
+\end{minipage}
+\end{tabular}
+\smallskip
+\end{center}
 
-\begin{center}\footnotesize\hrule\smallskip
-\begin{tabular}{c|c}
+\begin{center}\footnotesize\smallskip
+\begin{tabular}{cc}
 \begin{minipage}{.465\textwidth}
 \begin{verbatim}
 \begin{description}
@@ -48,6 +79,12 @@ itemise, enumerate, description, quotation
 \end{tabular}
 \smallskip\hrule
 \end{center}
+
+\subsection{Citando textualmente}
+
+Existem dois ambientes comumente usados para incluir excertos de
+outros textos no seu. Os ambientes \ambiente{quote} para trechos
+curtos, e \ambiente{quotation} para trechos mais longos.
 
 \subsection{Alinhamento}\label{sec:alinhamento}
 
@@ -56,11 +93,13 @@ ambas as margens retas e paralelas. Nem sempre isso é
 desejado. Existem muitas maneiras de definir o alinhamento do texto:
 falamos de duas delas aqui.
 
-\subsection{Texto não-justificado}
+\subsubsection{Texto não-justificado}
 
 \begin{flushleft}
 No ambiente
-\ambiente{flushleft}\index{flushleft@\ambiente{flushleft}}, o texto é
+\ambiente{flushleft}%
+\index{flushleft@\ambiente{flushleft}}%
+\index{alinhamento!alinhado a esquerda@alinhado à esquerda}, o texto é
 ``empurrado'' para a esquerda. Os espaços não são nem esticados nem
 comprimidos. O efeito resultante são linhas de comprimento variável, 
  por vezes uma opção interessante de diagramação.
@@ -68,11 +107,20 @@ comprimidos. O efeito resultante são linhas de comprimento variável,
 
 \begin{flushright}
 Simetricamente,
-\ambiente{flushright}\index{flushright@\ambiente{flushright}} tem o
-comportamento que seria de se esperar, fazendo  parágrafos  ficarem com a esquerda~\emph{rasgada}, isto é, sejam empurrados para a direita.
+\ambiente{flushright}%
+\index{flushright@\ambiente{flushright}}%
+\index{alinhamento!alinhado a direita@alinhado à direita} tem o
+comportamento que seria de se esperar, fazendo  parágrafos  ficarem
+com a esquerda~\emph{rasgada}, isto é, sejam empurrados para a
+direita. 
 \end{flushright}
 
-\subsection{Elementos flutuantes}\label{sec:floats}
+\begin{center}
+Mais não é preciso dizer: \ambiente{center}\index{center@center (ambiente)}\index{centralizado}.
+\end{center}
+
+\subsection{Elementos
+  flutuantes}\label{sec:floats}\index{flutuante@flutuante (elemento)}
 % TODO: falar de listoffigures e listtof
 
 Tipógrafos atentam para uma série de características na disposição do
@@ -85,17 +133,33 @@ O \LaTeX\ toma várias precauções na disposição desses elementos,
 ditos~\emph{flutuantes} (porque sua posição não é fixa no texto como a
 de uma palavra em uma frase). É como se os elementos fossem troncos de
 árvore à deriva sobre a correnteza de palavras que compõe o texto.
-
 Figuras e tabelas são somente alguns exemplos de elementos
 flutuantes. Eles são ambientes (respectivamente~\ambiente{figure}
-e~\ambiente{table}) que encapsulam o conteúdo que irá flutuar.
+e~\ambiente{table}) que encapsulam o conteúdo que irá
+flutuar.\footnote{Falamos de \emph{o que} acontece com um elemento
+  flutuante: ele deriva. \emph{Como} ele o faz, isto é, como o
+  \LaTeX\ tenta determinar um posicionamento adequado, é um assunto um
+  pouco mais delicado, que exige uma bagagem técnica (tanto
+  tipográfica quanto \TeX nica mesmo) que extrapola nosso escopo. O leitor
+  interessado não encontrará dificuldade para acessar uma miríade de
+  discussões a sobre \emph{algoritmos de posicionamento de
+    \emph{floats} do \LaTeX} na internet, ou em
+  livros: (respectivamente) no
+  \emph{TUGboat}~\cite{float-positioning-tug-proc-2000}, ou em livros
+  como~\cite{companion}.} Trocando em miúdos, ele (conteúdo) nem
+sempre será posto no exato ponto do texto (fonte) em que aparece.
+
+É frequente que elementos flutuantes apareçam ainda em um índice
+próprio (listas de figuras ou tabelas, por exemplo), e que possuam uma
+legenda (para que, mesmo extraídos de sua vizinhança textual,
+remetam ao assunto de que tratam).
 
 % colocar exemplo usando caption
 % enfatizar que o latex sabe onde colocar as imagens
 % opções de posicionamento
 % todo: como se insere no mecanismo de composição de página
 
-\subsubsection{Figuras}
+\subsubsection{Figuras}\index{figuras}
 
 Figuras são uma ferramenta poderosa na composição de textos, quando
 usadas com parcimônia. É possível colocar imagens no documento dizendo
@@ -115,6 +179,20 @@ problema, na maior parte dos casos. Acrescente
 poderá incluir imagens \extensao{png}, \extensao{jpg} e
 \extensao{pdf}, para citar algumas.
 
+O trecho a seguir inclui a figura~\ref{fig:tikz:piramide-cortada} em
+um ambiente flutuador.
+
+\begin{footnotesize}
+\begin{verbatim}
+\begin{figure}
+  \begin{center}
+    \input{exemplos-externos/tikz-01}
+    \caption{Uma figura gerada com o pacote \pacote{Tikz}.}\label{fig:tronco-piramide}
+  \end{center}
+\end{figure}
+\end{verbatim}
+\end{footnotesize}
+
 \begin{figure}
   \begin{center}
     \input{exemplos-externos/tikz-01}
@@ -122,6 +200,20 @@ poderá incluir imagens \extensao{png}, \extensao{jpg} e
   \end{center}
 \end{figure}
 
+Note que o comando
+\verb'\caption'\index{caption@\texttt{\char`\\caption}} é usado
+\emph{dentro} do ambiente \ambiente{figure} para acrescentar
+uma~\emph{legenda}\index{figura!legenda}\index{figure!legenda}. Repare
+ainda que o \verb'label' que segue a legenda permite fazer referência
+(seção~\ref{sec:ref-e-label}) 'a figura. Assim, por exemplo ``a
+figura~\ref{fig:tikz:layers} foi deslocada
+pelo \LaTeX'' é escrito: 
+\begin{center}\footnotesize
+\texttt{a
+  figura\char`\~\char`\\ref\char`\{fig:layers\char`\}\ foi deslocada
+  pelo \char`\\LaTeX}
+\end{center}
+em que ``\verb'fig:layers''' é o rótulo da figura.
 
 \begin{figure}
   \begin{center}
@@ -130,9 +222,41 @@ poderá incluir imagens \extensao{png}, \extensao{jpg} e
   \end{center}
 \end{figure}
 
-\subsubsection{Tabelas}\label{sec:tabelas}
+\subsubsection{Tabelas}\label{sec:tabelas}\index{tabelas}
 
-Tabelas são um dos maiores desafios de diagramação que têm que ser enfrentados frequentemente por tipógrafos. Cada tabela é única, e uma leve alteração de espaçamento tem o poder de alterar bastante o destaque de uma e outra informação.
+Tabelas são um dos maiores desafios de diagramação enfrentados
+corriqueiramente por tipógrafos. Cada tabela é única, e uma leve
+alteração de espaçamento tem o poder de alterar bastante o destaque de
+uma e outra informação.
+
+Comecemos pelo ambiente~\ambiente{tabular}, que é o que permite
+escrever as tabelas. Ele é um ambiente que recebe um parâmetro,
+indicando algumas propriedades das colunas da tabela, como podemos ver abaixo.
+
+O argumento do ambiente tabular é uma sequência de letras, entre as
+quais estão `{\tt c}', `{\tt l}' e `{\tt r}'. Elas indicam que as
+o alinhamento do texto nas colunas da tabela. As letras, da esquerda
+para a direita, referem-se, respectivamente às colunas, da esquerda
+para a direita. A seguir, cada linha da tabela contém o texto de uma
+``célula'' da tabela, separada da seguinte por um `\char`\&'. A célula
+mais à direita deve ser sucedida por \verb'\\', que indica o fim da
+linha da tabela.
+
+Existem outras letras que podem aparecer como parte do parâmetro
+de~\ambiente{tabular}. Uma delas é a barra vertical `{\tt |}', que
+traça uma barra entre colunas. 
+
+Há ainda comandos que permitem traçar linhas que separam apenas algumas das
+células, que fixam a largura de uma célula (para que seja possível
+escrever parágrafos de mais de uma linha na tabela). 
+
+Não chegamos a mencionar todas as opções à disposição para a
+composição de tabelas. Além desses, é possível extender o conjunto de
+comandos disponíveis, incluindo pacotes no preâmbulo do documento. A
+tabela~\ref{tab:notas}, a seguir, foi composta usando o
+pacote~\pacote{booktabs}. Outro pacote comumente usado é o
+\pacote{longtable}, quando estamos tratando de tabelas que se espalham
+por mais de uma página.
 
 \medskip
 \begin{center}\hrule\smallskip
@@ -149,30 +273,30 @@ Tabelas são um dos maiores desafios de diagramação que têm que ser enfrentad
 \medskip
 
 
-\begin{center}
-\begin{tabular}{llr}
-\toprule
-\multicolumn{2}{c}{Name} \\
-\cmidrule(r){1-2}
-First name & Last Name & Grade \\
-\midrule
-John & Doe & $7.5$ \\
-Richard & Miles & $2$ \\
-\bottomrule
-\end{tabular}
-\end{center}
 
+%% \medskip
+%% \begin{center}\hrule\smallskip
+%% \begin{tabular}{c|c}
+%% \begin{minipage}{.405\textwidth}\footnotesize
+%% \verbatiminput{exemplos/05-02-table-booktabs}
+%% \end{minipage} &
+%% \begin{minipage}{.535\textwidth}\setlength{\parindent}{1pc}
+\input{exemplos/05-02-table-booktabs}
+%% \end{minipage}
+%% \end{tabular}
+%% \smallskip\hrule
+%% \end{center}
+%% \medskip
 
+%% \begin{table}\centering
+%%   \caption{Gastos {\it \&} despesas / 1º semestre}
 
-\begin{table}\centering
-  \caption{Gastos {\it \&} despesas / 1º semestre}
-
-  \begin{tabular}{crrrrrrr}
-    mês & jan & fev & mar & abr & mai & jun & total\\
-    \hline
-  receita & $10$ & $0$ & $5$ & $20$ & $12$ & $13$ & $60$\\
-  gastos  & $-3$ & $-4$ & $-3$ & $-3$ & $-5$ & $-3$ & $-21$ \\
-  \hline
-  balanço & $7$ & $-4$ & $2$ & $17$ & $7$ & $10$ & $39$\\
-  \end{tabular}
-\end{table}
+%%   \begin{tabular}{crrrrrrr}
+%%     mês & jan & fev & mar & abr & mai & jun & total\\
+%%     \hline
+%%   receita & $10$ & $0$ & $5$ & $20$ & $12$ & $13$ & $60$\\
+%%   gastos  & $-3$ & $-4$ & $-3$ & $-3$ & $-5$ & $-3$ & $-21$ \\
+%%   \hline
+%%   balanço & $7$ & $-4$ & $2$ & $17$ & $7$ & $10$ & $39$\\
+%%   \end{tabular}
+%% \end{table}
