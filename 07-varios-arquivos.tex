@@ -1,15 +1,75 @@
 \section[Múltiplos arquivos]{Projetos com vários arquivos}
 
-Nem todas as pessoas já tiveram a experiência de trabalhar em projetos em que vários arquivos de texto são necessários --- donde o título desta seção pode soar estranho. Aqui discutiremos como (e por que) separar um documento em arquivos diferentes, que geram ao final um mesmo~\extensao{pdf} ou~\extensao{dvi}.
+Nem todas as pessoas já tiveram a experiência de trabalhar em projetos em que vários arquivos de texto são necessários --- donde o título desta seção pode soar estranho. Aqui discutiremos como (e por que) separar um documento em arquivos diferentes, que geram ainda um único arquivo~\extensao{pdf} ou~\extensao{dvi}.
 
-Há diversas situções em que é vantajoso ter um texto em vários pedaços. Uma bastante comum é o reuso. Dependendo do tipo de documento que você costuma escrever, determinados conjuntos de pacotes serão imprescindíveis, e você se verá acrescentando sempre os mesmos e definindo os mesmos comandos várias vezes ao dia. Mantendo um arquivo com o seu preâmbulo, você só precisa dizer ao \LaTeX\ (uma vez) onde encontrá-lo.
+Há diversas situções em que é vantajoso ter um texto em vários pedaços. Uma bastante comum é o reuso. Dependendo do tipo de documento que você costuma escrever, determinados conjuntos de pacotes serão imprescindíveis, e você se verá acrescentando sempre os mesmos e definindo os mesmos comandos de novo e de novo e de novo\ldots\ Mantendo um arquivo com o seu preâmbulo, você só precisa dizer ao \LaTeX\ (uma vez) onde encontrá-lo.
 
 Arquivos menores são mais fáceis e rápidos de transmitir, imprimir, e de editar (é rápido encontrar o lugar no texto que se quer modificar). Ganha-se ainda em organização: em trabalhos de médio e grande porte, não se pode menosprezar o benefício de ter arquivos relacionados agrupados em uma mesma pasta. Essa vantagem é crucial se há mais de uma pessoa participando do projeto.
 
-Uma possibilidade que a quebra em arquivos traz é processar apenas parte do documento por vez. (A ``compilação'' de um projeto complexo pode levar alguns minutos --- e podem ser necessárias várias iterações  seguidas durante revisões e restruturações.)
+Uma possibilidade que a quebra em arquivos traz é processar apenas parte do documento por vez: somente o capítulo que se está editando, por exemplo. (A ``compilação'' de um projeto complexo pode levar alguns minutos --- e podem ser necessárias várias iterações  seguidas durante revisões e restruturações.)
 
-Alguma separação, é inevitável. Os pacotes, e classes de documento, por exemplo, são arquivos de texto que são incluídos no seu texto de modo controlado. Listas de figuras e o sumário são outros exemplos. Muitas vezes você irá acrescentar imagens, que apesar de não serem arquivos de texto, são arquivos externos ao documentos que a ele são acrescentados durante o processamento.
+Alguma separação, é inevitável. Os pacotes, e classes de documento, por exemplo, são arquivos de texto que são incluídos no seu texto de dissimuladamente. Listas de figuras e o sumário são outros exemplos.\footnote{Estes são arquivos auxiliares criados pelo sistema durante o processamento de seu texto, e que são incluídos no documento quando ao processá-lo o \LaTeX\ percebe sua existência.} Muitas vezes você irá acrescentar imagens, que, sendo ou não  arquivos de texto, são externos ao documento.
 
 \subsection{\texttt{\char`\\input}}
+
+O modo mais simples e ``puro'' de acrescentar um arquivo, digamos, \arquivo{agradecimentos.tex} ao texto usar o comando \verb'\input{agradecimentos}'. Quando o texto é processado, esse comando tem o efeito de fazer com que o conteúdo do arquivo seja enxertado no texto, na posição exata em que ele ocorre: \emph{para o \LaTeX, é como se o conteúdo sempre houvesse estado ali}.
+
+
+Se chamado via linha de comando, o \LaTeX\ procura pelo arquivo no diretório (pasta) a partir do qual foi invocado. Ambientes mais elaborados para a edição de documentos têm provavelmente alguma opção de configuração do diretório de ``referência''. Num projeto em que todos os arquivos estão na mesma pasta, isso é indiferente.\footnote{Claro, há casos em que o diretório de referência \emph{faz} diferença. Se esse é o seu caso, sugiro que procure alguém que use o mesmo ambiente que você, ou mesmo peça ajuda na internet. É provável que a solução do problema seja bem simples.}
+O diretório de referência passa a ser importante quando o projeto usa arquivos que estão em pastas diferentes. Isso porque o argumento do comando \verb'\input' é mais do que o nome do arquivo. É o \emph{caminho} até o arquivo.
+
+Digamos que arquivo ``principal'' do texto (i.e., aquele que o \LaTeX\  irá processar), chama-se \arquivo{carta-a-dulcineia.tex}. Ele será uma pequena narrativa das aventuras e desventuras que esteve a enfrentar em honra de sua amada. Cada trecho dessa narração está em um arquivo, e digamos que já estão escritos os arquivos \arquivo{o-gigante.tex} e~\arquivo{terrivel-feitico.tex}, guardados na pasta \arquivo{capitulos}; há também um prólogo etílicamente enamorado. O projeto como um todo está numa pasta chamada \arquivo{carta-a-dulcineia}, que está organizado conforme mostra a tabela~\ref{tab:projeto-carta-a-dulcineia}.
+
+\begin{table}\centering
+  \begin{tabular}{rl}
+%-------------------------------------------------
+    \hline
+%-------------------------------------------------
+    \arquivo{carta-a-dulcineia}: 
+    & \\
+    & \arquivo{carta-a-dulcineia.tex},\\
+    & \arquivo{capitulos}\\
+    & \arquivo{prologo.tex}\\
+%-------------------------------------------------
+%    \hline
+%-------------------------------------------------
+    \arquivo{capitulos}:
+    & \\
+    & \arquivo{o-gigante.tex},\\
+    & \arquivo{terrivel-feitico.tex}\\
+%-----------------------------------------------
+    \hline
+  \end{tabular}
+  \caption{Arquivos do projeto \emph{Carta a Dulcinéia}}%
+  \label{tab:projeto-carta-a-dulcineia}
+\end{table}
+
+
+Para que todos esses arquivos apareçam no documento final, eles precisam ser incluídos na \arquivo{carta-a-dulcineia.tex}, que poderia ser escrito como segue.
+
+\begin{ttsampleflushleft}%
+\macroCallWithParameter{documentclass}{letter}\\
+\ttbegin{document}\\
+\macroCallWithParameter{input}{prologo}\\
+\macroCallWithParameter{input}{capitulos/o-gigante}\\
+\macroCallWithParameter{input}{capitulos/terrivel-feitico}\\
+\ttend{document}
+\end{ttsampleflushleft}
+
 \subsection{\texttt{\char`\\include\textrm{ e }\char`\\includeonly}}
 
+Outro modo de incluir arquivos é com o comando \verb'\include'. Ele se comporta de maneira idêntica ao \verb'\input', só que cada arquivo enxertado começa em uma nova página. Outra diferença é que você pode usar o comando \verb'\includeonly' no preâmbulo para dizer exatamente quais dos arquivos incluídos (por um \verb'\include') devem ser processados e aparecer no arquivo final. Considerando o exemplo do projeto de carta para a doce Dulcinéia, pode-se processar apenas o capítulo sobre o gigante e o prólogo enquanto se está trabalhando neles, bastando formatar o arquivo como mostrado abaixo. 
+
+\bigskip
+\begin{ttsampleflushleft}%
+\macroCallWithParameter{documentclass}{letter}\\
+\macroCallWithParameter{includeonly}{o-gigante,prologo}\\
+\ttbegin{document}\\
+\macroCallWithParameter{include}{prologo}\\
+\macroCallWithParameter{include}{capitulos/o-gigante}\\
+\macroCallWithParameter{include}{capitulos/terrivel-feitico}\\
+\ttend{document}
+\end{ttsampleflushleft}
+\bigskip
+
+Note a lista de documentos que se quer processar, e que os nomes são separados por uma vírgula, sem nenhum espaço entre eles.
