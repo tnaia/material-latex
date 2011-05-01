@@ -1,49 +1,172 @@
-\section{Matemática}\label{sec:matematica}
+\section{Matemática}\label{sec:matematica}\index{modo matematico@modo matemático}
 
 Ah, a matemática\ldots Ela é em grande parte a razão pela qual temos o
 \LaTeX\ (e os computadores!). Aqui, em particular, o \LaTeX\ brilha.
+
 
 Existem dois ``modos'' principais nos quais o \LaTeX\ pode operar
 quando escreve expressões matemáticas: o \emph{modo matemático inline}
 e o \emph{modo matemático ``display''}. Ele está no primeiro, em
 geral, quando está escrevendo uma fórmula que deverá ocupar um espaço
-limitado. No meio de um parágrafo, por exemplo; mas também em índices
+limitado (no meio de um parágrafo, por exemplo), mas também em índices
 ou em frações, como veremos adiante.
 
-% como o texto normal não é mais texto normal em modo matemático
+É importante perceber que as regras de espaçamento entre letras são
+diferentes quando se está trabalhando no modo matemático. As letras
+são postas em um tipo itálico, e os espaços são desconsiderados entre
+letras; o espaço entre caracteres como $=$, $+$ e $-$ mudam, e
+parágrafos (duas quebras de linha consecutivas) não são
+permitidos.
 
-amsmath
+Nesta seção faremos uma pequena incursão na composição de fórmulas
+usando \LaTeX. Tenha em mente que há uma série de parâmetros que
+afetam a legibilidade de uma expressão matemática --- e
+mencionaremos apenas algumas delas. Em todos os casos, lance mão de
+seu bom-senso, pergunte a opinião de seus amigos, e você não deve ter
+problemas. Mãos à obra!
 
+\subsection{Entrando no modo matemático}
 
-$$x^2$$
+Já mencionamos a existência de dois modos matemáticos. Para escrever
+uma fórmula em meio a um parágrafo, basta escrevê-la entre um par de
+cifrões \verb'$'. A fórmula será então tratada peloa \LaTeX\ como
+qualquer outra palavra no parágrafo: \verb'$a + b$' resulta em
+$a+b$. A presença de espaços é indiferente no modo
+matemático. `\verb'a+b'', `\verb'a +b'', e `\verb'a + b'' são todas formas
+equivalentes. Uma grande vantagem disso é que o autor pode formatar a
+expressão como melhor lhe convier em termos de legibilidade quando
+está a escrever o texto, e o resultado não será ``estragado'' por
+isso. Esse é o modo de escrever matemática no meio da linha
+(\emph{inline}\index{modo matematico!inline@inline}) . Outro modo é
+colocar a fórmula em um banner, com destaque: é o modo de exibição
+(\emph{display})\index{modo matematico!display@display}. Para usá-lo,
+coloque a fórmula entre `\verb'\['' e `\verb'\]'': a expressão
+\verb'\[a\times b = c.\]' faz o \LaTeX\ produzir
+\[
+a\times b = c.
+\]
 
-$$x_2$$
+(O ponto final foi colcado só para terminar a frase, poderia ser
+omitido sem maiores consequências que uma frase interminada.)
 
-$$2x^2x$$
+\subsection[Índices e expoentes]{Para cima e para baixo}
 
-$$2x^{2x}$$
+É simples: para gerar uma expressão ``superscrita'' a outra, ($a^b$)
+usa-se o comando `\verb'^''. Para ``subscritos'', usamos
+'\verb'_''. Observe os exemplos, e note que a necessidade de agrupar
+alguns conjuntos de símbolos para obter certos resultados.
 
-$$\sqrt{a}$$
+\medskip
+\begin{center}\hrule\smallskip\footnotesize
+\begin{tabular}{c|c}
+\begin{minipage}{.405\textwidth}\footnotesize
+\verbatiminput{exemplos/09-sub-e-superscripts-math-01}
+\end{minipage} &
+\begin{minipage}{.535\textwidth}\setlength{\parindent}{1pc}
+\input{exemplos/09-sub-e-superscripts-math-01}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
 
-$$\sqrt[a]b$$
+Repare que para obter as expressões ``lim'' e ``log'' têm texto
+escrito de modo diferente. Para  escrever texto na fonte romana
+(i.e., fonte to texto corrente), é preciso sair temporariamente do
+modo matemático, para que os espaços voltem a valer. Isso pode ser
+feito usando-se uma~\emph{caixa} (sobre caixas, vide a
+seção~\ref{sec:caixas}). (Preste atenção aos espaços!)
 
-Com versão inline.
+\medskip
+\begin{center}\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.405\textwidth}\footnotesize
+\verbatiminput*{exemplos/09-sub-e-superscripts-math-02}
+\end{minipage} &
+\begin{minipage}{.535\textwidth}\setlength{\parindent}{1pc}
+\input{exemplos/09-sub-e-superscripts-math-02}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
 
-$$\frac ab$$
+Alguns comandos para digitar expressões matemáticas, como o
+\verb'\frac' levam mais de um parâmetro. Outros, como o \verb'\choose'
+operam sobre todo o conteúdo do grupo que o contém, usando como
+operandos o texto que se encontra à sua esquerda e à sua direita no
+grupo.
 
-$$\sum \sum_a^b$$
+\medskip
+\begin{center}\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.405\textwidth}\footnotesize
+\verbatiminput{exemplos/09-sub-e-superscripts-math-03}
+\end{minipage} &
+\begin{minipage}{.535\textwidth}\setlength{\parindent}{1pc}
+\input{exemplos/09-sub-e-superscripts-math-03}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
 
-$$\int\!\!\!\int_{-\infty}^{+\infty}$$
+Nos exemplos anteriores vimos situações em que parênteses esticaram ou
+encolheram, junto com o conteúdo que envolvem. Para obter esse efeito,
+usamos os comandos \verb'\left' e~\verb'\right' (sempre aos pares),
+seguidos do caractere que se deseja expandir (colchetes, chaves, barra
+vertical ou parênteses). O exemplo a seguir já exibe um ou outro
+requinte a mais. 
 
-Frações contínuas e displaystyle
-$$(\frac ab) \hbox{ versus } \left(\frac ab\right)$$
+\medskip
+\begin{center}\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.405\textwidth}\footnotesize
+\verbatiminput{exemplos/09-sub-e-superscripts-math-04}
+\end{minipage} &
+\begin{minipage}{.535\textwidth}\setlength{\parindent}{1pc}
+\input{exemplos/09-sub-e-superscripts-math-04}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
 
-$$\partial\delta\alpha\beta\gamma\Gamma\epsilon\varepsilon$$
+Primeiro, usamos \verb'\textrm' para que o `d' em d$x$ (e o ``def''
+em~$\stackrel{\textrm{def}}=$) seja escrito 
+em texto romano. O comando \macroCall{stackrel} \emph{empilha}
+pequenos textos, e trata o símbolo resultante como um operador
+relacional (maior, menor, menor ou igual e etc.). Usamos ainda os
+comandos `\verb'\!' e~`\verb'\,'', correspondentes aos comandos
+'\verb'\negthinspace'' e '\verb'\thinspace'' em modo texto,
+respectivamente, usados (também respectivamente) para aproximar ou
+afastar elementos do texto horizontalmente\footnote{Comumente dizemos
+  que esses comandos   \emph{produzem espaço horizontal}:
+  \macroCall{negthinspace} produz   espaço fino negativo,
+  e~\macroCall{thinspace} produz um espaço fino.} (mais sobre espaços
+na seção~\ref{sec:medidas}).
 
-$$a \choose b$$
+Você pode obter letras gregas no modo matemátio facilmente. Vários
+outros símbolos estão disponíveis, e a internet é sua amiga para
+encontrá-los.
 
-$$=\sim\neq\leq\geq\in\notin\cap\cup\oplus\cdot\times\div/\equiv\forall\exists\mapsto\Rightarrow\longleftrightarrow
-\lim_{x\to b}$$
+\medskip
+\begin{center}\hrule\smallskip
+\begin{tabular}{c|c}
+\begin{minipage}{.405\textwidth}\footnotesize
+\verbatiminput{exemplos/09-sub-e-superscripts-math-05}
+\end{minipage} &
+\begin{minipage}{.535\textwidth}\setlength{\parindent}{1pc}
+\input{exemplos/09-sub-e-superscripts-math-05}
+\end{minipage}
+\end{tabular}
+\smallskip\hrule
+\end{center}
+\medskip
 
+E isto é apenas parte do que se pode fazer com o \LaTeX, apenas
+tocamos a superfície. Uma boa
+referência é~\cite{graetzer00}.
 
-$$\vec{\nu}+f(\overbrace{a_1a_2\ldots a_n}^{\hbox{$n$ primo}})$$
+% $$\vec{\nu}+f\overbrace{(a_1a_2\ldots a_n)}^{\hbox{$n$ primo}}$$
+% ensuremath
