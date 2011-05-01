@@ -6,21 +6,21 @@
 notas de rodapé, notas marginais, cabeçalho, número de página
 
 \subsection{Parágrafos marginais}
-\newcommand{\amounttorotate}{0}
-Usar \marginpar{\ifthenelse{\isodd{\thepage}}{\raggedleft}{\raggedright}\footnotesize notas marginais} notas
+\newcommand{\amounttorotate}{0}\newlength{\recuo}
+Usar \marginpar{\ifthenelse{\isodd{\thepage}}{\raggedright}{\raggedleft}\footnotesize notas marginais} notas
 marginais no texto pode ser uma maneira interessante de destacar algum
 conceito. O comando \verb'\marginpar{parágrafo}' acrescenta um
 parágrafo à margem do parágrafo atual. É possível mudar drasticamente
 a aparência de um parágrafo lateral (assim como de qualquer outro tipo
 de parágrafo): diminuir a fonte em que é escrito, deixá-lo rasgado à
-direita ou esquerda (seção~\ref{sec:alinhamento}) ou à direita,
+direita ou esquerda (seção~\ref{sec:alinhamento}),
 envolvê-lo em uma caixa,
 rotacioná-lo%
 \marginpar{%
   \ifthenelse{\isodd{\thepage}}%
-             {\raggedleft\renewcommand{\amounttorotate}{90}}%
-             {\raggedright\renewcommand{\amounttorotate}{-90}}%
-  \rotatebox{\amounttorotate}{\footnotesize\it $\mathcal{A}$ssim.}},
+             {\raggedright\renewcommand{\amounttorotate}{-90}\setlength{\recuo}{-1em}}%
+             {\raggedleft\renewcommand{\amounttorotate}{90}\setlength{\recuo}{-1em}}%
+  \rotatebox{\amounttorotate}{\hspace{\recuo}\footnotesize\it $\mathcal{A}$ssim.}},
 etc. --- em suma, qualquer transformação. Por exemplo, parágrafos de
 páginas pares e ímpares são por padrão colocados de modo a que estejam
 na lateral da folha que ficaria ``para fora'' caso o texto seja
