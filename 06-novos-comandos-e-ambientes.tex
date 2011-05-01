@@ -1,15 +1,151 @@
 \section{Expandindo o \LaTeX}
 
-\subsection{Criando comandos}
-
-\label{sec:comandos}
-
 Há uma grande quantidade de comandos disponíveis ao usuário de
 \LaTeX\ (e ainda mais são criados em pacotes novos
 continuamente). Embora a maior parte das coisas que se pode querer
 fazer em \LaTeX\ já exista na forma de algum comando, não raro podemos
-nos valer, com proveito, do poder de \emph{definir nossos
-  próprios comandos}. 
+nos valer, com proveito, do poder de \emph{estender o \LaTeX} ---
+como elástico que é.
+ 
+Há uma série de razões por que usar comandos é uma boa. Falaremos
+delas\ldots\ ao fim desta seção.
+
+\subsection{Criando comandos}\label{sec:comandos}
+
+O mecanismo primário de programação do \TeX\ (e logo o \LaTeX) é a
+definição de macros. Se isso soa grego, então ignore. Criar, ou
+\emph{definir}, comandos é instruir o sistema sobre o que fazer quando
+ele encontra determinada sequência de controle.
+
+Definimos comandos usando o comando \verb'\newcommand'. O tipo mais
+simples de comando que há é a mera substituição. É como se
+definíssemos um apelido para algo que escrevemos com frequência.
+
+Por exemplo, se estou a compor um estudo sobre a genealogia da família
+de feiticeiros do castelo \mbox{Rá-tim-bum}, faz sentido definir os
+comandos \verb'\strad', e \verb'\nino'
+\newcommand{\stradv}{Stradivarius Victorius}
+\newcommand{\nino}{Antonino}
+\begin{ttsample}
+\index{newcommand@{\tt\char`\\newcommand}}
+  \defNewCommand{stradv}{Stradivarius Victorius}\\
+  \defNewCommand{nino}{Antonino}
+\end{ttsample}
+que define \verb'\stradv' como sinônimo para ``{\tt Stradivarius
+  Victorius}'', e \verb'\nino' analogamente. Então para escrever
+``\nino\ \stradv\ II é o mais novo \stradv'', basta escrever
+\begin{ttsample}
+\macroCall{nino}\barra\ \macroCall{stradv}\barra\ II
+ é o mais
+  novo \macroCall{stradv}.
+\end{ttsample}
+
+
+Esse tipo de comando é particularmente útil (para definir siglas
+grandes, por exemplo, ou nomes comuns). Mas por vezes não nos
+basta. Queremos mais. Queremos que o comando seja parametrizável, ou
+seja, que parte dele seja alterável. Fazemos isso dizendo ao
+\LaTeX\ que o comando leva parâmetros, passando para
+\verb'\newcommand' um parêmetro opcional: o número de argumentos
+(parâmetros) que o comando usa. Por exemplo,
+\begin{ttsample}
+  \defNewCommandWithParameter{estrangeiro}{1}{``\#1''}
+\end{ttsample}
+
+Este comando coloca aspas em torno de termos estrangeiros. Note o uso
+do caractere reservado `{\tt\#}'. Seguido de um número $n$ entre $1$ e
+$9$, ele referencia o $n$-ésimo argumento que foi passado para o
+comando. Além disso, observe que o número de parâmetros é posto entre
+colchetes, \emph{entre} o nome da macro\footnote{Macro e comando são
+    sinônimos aqui.}\index{macro@macro} e a sua definição.
+
+Mais um último exemplo. O que o comando \verb'\formal' definido a
+seguir faz?
+
+\begin{ttsample}
+  \defNewCommandWithParameter{formal}{2}{Sr\#1 \#3}\\
+\end{ttsample}
+
+\subsection{Modificando comandos}
+
+Só é possível definir um comando uma vez. Se após isso queremos mudar
+seu significado, o que fazemos é \emph{redefiní-lo}.
+\begin{ttsample}
+  \redefCommand{emph}{PRESTA ATENÇÃO AQUI!}
+\end{ttsample}
+
+A sintaxe é a mesma da criação usual de comandos. Ao redefinir um
+comando, não é preciso continuar usando o mesmo número de parâmetros
+que originalmente ele usava. É como definir pela primeira vez um
+comando, só que você acrescenta ``{\tt re}'' antes de {\tt
+  newcommand}.\footnote{A vantagem de ocorrer um erro se você tenta
+  definir um comando que já existe é que desse modo o \LaTeX\ garante
+  que, se você está redefinindo um comando, está fazendo-o consciente
+  de que está sobrescrevendo um comando existente. Isso é importante
+  quando você está manipulando macros que serão usadas por outras
+  pessoas, ou por você mesmo daqui a algum tempo.}
+
+\subsection{Criando e modificando ambientes}
+
+Você cria um ambiente usando \verb'\newenvironment'. Um ambiente é um
+comando com dois argumentos: o texto que você quer que seja inserido
+\emph{antes} do início da região,e o que quer que seja inserido
+\emph{depois}. É possível (e simples) definir ambientes que recebam
+parâmetros. Deixamos por conta do leitor descobrir como fazê-lo.
+
+\bigskip
+\begin{ttsampleflushleft}%
+\macroCallWithThreeParameters{newenvironment}{com fofoca}{Você não
+    acredita o que\ldots}{\ldots e essa agora!}\\
+  \ttbegin{com fofoca}\\
+    Casaram!\\
+  \ttend{com fofoca}
+\end{ttsampleflushleft}
+
+\subsection[Estender pra quê?]%
+{Não sou mandão. Por que ficar criando comandos?}
+\label{sec:porque-estender}
+
+Terminamos esta seção com alguma discussão sobre o que vimos
+aqui. Definir comandos é uma parte importante do uso do \LaTeX. É com
+eles que você conseguirá marcar a estrutura e o significado de cada um
+dos elementos do seu texto. Comandos não precisam fazer nada (por um
+bom tempo) para que sejam úteis. Por exemplo
+
+\begin{ttsample}
+  \defNewCommandWithParameter{palavraChave}{1}{\#1}
+\end{ttsample}
+
+O importante aqui, a princípio, é que o \emph{significado} seja
+explicitado. Futuramente, à medida que você ganhar fluência em
+\LaTeX, verá que um texto semanticamente marcado transforma-se
+facilmente em uma obra de encher os olhos. Por exemplo, se
+pudermos confiar que todas as palavras-chave do texto estão marcadas
+com o comando \verb'\palavraChave', e toda palavra estrangeira com
+\verb'\estrangeira', será fácil colocar em um parágrafo todas as
+palavras-chave do texto automaticamente,\negthinspace\footnote{Isto é,
+  de modo que novas anotações sejam agregadas a ele toda vez que o
+texto for processado, sem necessidade de interferência manual no
+processo} ou fazer um glossário dos termos em outro idioma. A
+anotação do significado de um elemento é um ponto de referência ao
+qual podemos acrescentar formatação e ações.
+
+
+Comandos estáticos agilizam a digitação, e são ferramentas importantes
+para garantir a uniformidade de nomenclatura no texto. 
+Conceitos que ainda estamos concebendo ou batizando, termos de cuja
+tradução não estamos certos, siglas e  elementos que desejamos
+referenciar em glossários ou índices, todos esses são fortes
+candidatos a serem parcial ou totalmente encapsulados por um comando
+ou ambiente personalisado. Esse é um dos modos pelos quais o
+\LaTeX\ apoia o paradigma \acronimowysiwym.\footnote{Além disso, o
+  ponto do texto em que ocorre a
+  definição do comando ``encapsulador'' é o lugar mais seguro
+  (de fato, é \emph{o}~lugar) para se colocar marcações visuais, como
+  \textbf{negrito}, \textsf{sem serifa} ou \textsc{versalete}, já que
+  assim as mesmas transformações visuais são assim aplicadas
+  consistentemente a todos os elementos com igual marcação semântica.}
+
 
 % situações em que comandos são importantes: abreviações, semântica,
 % dry
@@ -17,12 +153,3 @@ nos valer, com proveito, do poder de \emph{definir nossos
 
 % encapsulando formatação em semântica (negrito, small capitals,
 % centralizando, sans  typewritter)
-
-\subsection{Modificando comandos}
-
-\subsection{Criando ambientes}
-
-newenvironment, 
-
-\subsection{Modificando ambientes}
-renewenvironment

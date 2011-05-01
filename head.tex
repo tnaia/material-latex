@@ -40,4 +40,47 @@
 \noindent\makebox[0pt]{\hspace{-20pt}\rule[-\mydepth]{1pt}{\myheight}}%
 \usebox{\mybox}\medskip}
 
-% box para uso genérico..
+% abreviação para left & right braces
+\newcommand{\lch}{\char`\{}
+\newcommand{\rch}{\char`\}}
+\newcommand{\lrch}{\lch\rch}
+\newcommand{\rlch}{\rch\lch}
+
+% barra `\' em tt
+\newcommand{\barra}{{\tt\char`\\}}
+
+% envolve parâmetro em chaves em tt
+\newcommand{\wrapinbraces}[1]{{\tt \lch#1\rch}}
+
+% chamada de macro
+\newcommand{\macroCall}[1]{{\tt\barra#1}}
+\newcommand{\macroCallWithParameter}[2]{{\tt\barra#1\wrapinbraces{#2}}}
+\newcommand{\macroCallWithTwoParameters}[3]{{\tt\barra#1%
+        \wrapinbraces{#2}%
+        \wrapinbraces{#3}}}
+\newcommand{\macroCallWithThreeParameters}[4]{{\tt\barra#1%
+        \wrapinbraces{#2}%
+        \wrapinbraces{#3}%
+        \wrapinbraces{#4}}}
+
+
+% definição de comando
+\newcommand{\defNewCommand}[2]{\macroCallWithTwoParameters{newcommand}{#1}{#2}}
+\newcommand{\defNewCommandWithParameter}[3]{{%
+        \tt\barra newcommand\wrapinbraces{\barra#1}[#2]\wrapinbraces{#3}}}
+\newcommand{\redefCommand}[2]{\macroCallWithTwoParameters{renewcommand}{#1}{#2}}
+\newcommand{\ttbegin}[1]{\macroCallWithParameter{begin}{#1}}
+\newcommand{\ttend}[1]{\macroCallWithParameter{end}{#1}}
+
+
+% ambiente em que vou aninhar tt em footnote...
+\newenvironment{ttsampleflushleft}{\noindent\footnotesize\tt}{}
+\newenvironment{ttsample}%
+        {\begin{center}\begin{ttsampleflushleft}}%
+        {\end{ttsampleflushleft}\end{center}}
+
+% nomes
+\newcommand{\acronimowysiwyg}{wysiwyg}
+\newcommand{\wysiwyg}{what you see is what you get}
+\newcommand{\acronimowysiwym}{wysiwym}
+\newcommand{\wysiwym}{what you see is what you mean}
