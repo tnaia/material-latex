@@ -6,7 +6,11 @@
 Quando você escreve um texto~\LaTeX, a maior parte do tempo você está
 escrevendo como se usasse uma máquina de escrever comum (talvez você nunca tenha usado uma, mas provavelmente pode imaginar como é). Mas não todo o tempo. 
 
-Uma primeira diferença das máquinas de escrever é o espaçamento. Muitos textos são feitos de modo que formem retângulos na página (o afamado \emph{alinhamento justificado}. Mas para que as linhas tenham o mesmo comprimento, é preciso hifenar\footnote{Vide seção~\ref{sec:hifenacao}.} algumas palavras (ou seja quebrá-las), e ainda alargar ou comprimir ligeiramente o espaço entre as palavras (essa é uma tarefa complicada, que o \LaTeX\ desempenha exemplarmente). Não é surpresa que o sistema tenha um modo diferente de lidar com o espaçamento que colocamos no texto do que outros sistemas. Por exemplo, colocar um espaço entre palavras faz com que elas fiquem separadas por um espaço (até aí, nenhuma surpresa). Mas colocar dois, três, ou cinquenta espaços entre um par de palavras tem o mesmo efeito que colocar apenas um. E mais: quebrar a linha no texto não causa uma quebra de linha no texto final. Observe atentamente o exemplo abaixo. O caractere `\texttt{\textvisiblespace}' indica um espaço em branco.
+Uma primeira diferença das máquinas de escrever é o
+espaçamento. Muitos textos são feitos de modo a formarem retângulos na
+página (o afamado \emph{alinhamento justificado}). Mas, para que as
+linhas tenham o mesmo comprimento, é preciso hifenar\footnote{Vide
+  seção~\ref{sec:hifenacao}.} algumas palavras, e ainda alargar ou comprimir ligeiramente o espaço entre as elas (essa é uma tarefa complicada, que o \LaTeX\ desempenha exemplarmente). Não é surpresa que o sistema tenha um modo diferente de lidar com o espaçamento que colocamos no texto. Por exemplo: colocar um espaço entre palavras faz com que elas fiquem separadas por um espaço (até aí, nenhuma surpresa). Mas colocar dois, três, ou cinquenta espaços entre um par de palavras tem o mesmo efeito que colocar apenas um. E mais: quebrar a linha no texto não causa uma quebra de linha no texto final. Observe atentamente o exemplo abaixo. O caractere `\texttt{\textvisiblespace}' indica um espaço em branco.
 
 \medskip
 \begin{center}\hrule\smallskip
@@ -17,7 +21,7 @@ Uma primeira diferença das máquinas de escrever é o espaçamento. Muitos text
 \begin{minipage}{.535\textwidth}\setlength{\parindent}{1pc}
 \input{exemplos/03-espacos-01}
 \end{minipage}
-\end{tabular}
+\end{tabular}\index{\\@{\tt\char`\\\char`\\}}
 \smallskip\hrule
 \end{center}
 \medskip
@@ -63,11 +67,11 @@ Naturalmente, surge a pergunta: mas e se eu quiser usar uma
 \textbackslash\ no meu texto? De fato, se você digitar
 ``\verb|amigo\inimigo|'' para obter amigo\textbackslash inimigo, terá
 uma surpresa: muito provavelmente o \LaTeX\ reclamará de uma
-\verb!undefined control sequence \inimigo!. Veremos mais adiante que
+\verb!undefined control sequence \inimigo!. Veremos que
 alguns caracteres são ``reservados'' pelo \LaTeX\ para algumas funções
-especiais. Alguns exemplos são os caracteres `\%', `\$' e `\_', além,
+especiais. Citamos aqui os caracteres `\%', `\$' e `\_', além,
 claro, do nosso amigo `\verb|\|'. Se você deseja usá-los no seu texto,
-será preciso usar alguma sequência de controle que os coloque lá. A
+será preciso recorrer a alguma sequência de controle que os coloque lá. A
 propósito, as sequências de controle necessárias para esses caracteres
 em particular são
 
@@ -89,7 +93,6 @@ uma página por folha.
 O trecho abaixo tem três sequências de controle. Vejamos o que
 significam. 
 
-\begin{footnotesize}
 \begin{verbatim}
 \documentclass{article}
 \begin{document}
@@ -98,7 +101,6 @@ Olá mundo! % Colocar um conteúdo de verdade.
 
 \end{document}
 \end{verbatim}
-\end{footnotesize}
 
 Primeiro definimos a \emph{classe} do documento, com a
 sequência de controle \verb|\documentclass|. Essa sequência requer um
@@ -112,7 +114,7 @@ elementos do texto, p.~ex., a formatação dos números das páginas. Outras
 classes comumente usadas incluem \verb!letter!, para cartas,
 \verb!beamer! para apresentações de slides, \verb!report! para
 relatórios, \verb!book! para livros, \verb!a0poster! para pôsteres em
-A0, etc. Há vários outros, como p.~ex., modelos para teses
+papel \textsf{A0}, etc. Há vários: modelos para teses
 disponibilizados por universidades, muitos dos quais se pode obter
 gratuitamente na internet.
 
