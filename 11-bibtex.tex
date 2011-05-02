@@ -1,5 +1,68 @@
 \section{Bibliografia {\it \&} Cia.: Bib\TeX}\label{sec:biblio}
 
+Veremos nesta seção duas abordagens para a composição de
+bibliografias. Em uma delas, escrevemos a bibliografia linha por
+linha, assim como escrevemos o texto. O \LaTeX\ automaticamente 
+numera as entradas da bibliografia, e você pode referenciá-los com o
+comando \macroCall{cite}.
+
+Outro jeito, muito popular a propósito, de trabalhar com bibliografias
+é usando o programa Bib\TeX. Nessa abordagem, as entradas
+bibliográficas são escritas em um arquivo \extensao{bib}, seus campos
+(autor, edição, editora, etc.) são marcados semanticamente, e a
+formataçao é deixada a encargo do programa Bib\TeX\footnote{E pacotes
+  que você porventura acrescente para configurar esse conportamento.}.
+
+\subsection{Fazendo no muque}
+
+O mecanismo original de composição de bibliografias pressupõe que elas
+estejam postas em um ambiente próprio,
+o~\ambiente{thebibliography}. Cada entrada possui opcionalmente um
+rótulo público, que aparecerá entre colchetes quando for citada, e
+ainda um rótulo interno, que funciona como os rótulos definidos com
+\macroCall{ref}. Se nenhum rótulo público é fornecido, o
+\LaTeX\ numera as entradas, e coloca ali o respectivo número.
+
+Outra característica importante deste método é que as referências
+aparecem exatamente na ordem em que foram declaradas, como seria de se
+esperar. Isso não acontece, veremos, quando se usa o Bib\TeX, que
+automatiza a ordenação dos itens da referência.
+
+O processo de compilação do documento se altera quando se acrescenta
+bibliografias em um documento, do mesmo modo como acontece quando
+usam-se referências internas: o processamento do arquivo gera alguns
+arquivos auxiliares, que são usados para escrever as citações.
+
+\begin{verbatim}
+\begin{thebibliography}{longuissimo}
+\bibitem[Tahan83]{malba-tahan} TAHAN, Malba. \emph{O Homem que
+Calculava}. Ed. Círculo do Livro. Edição integral. 1983.
+
+\bibitem[Calvino03]{se-um-viajante} CALVINO, Ítalo. 
+\emph{Se um Viajante numa Noite de Inverno}. Ed. Schwarcz. 2003.
+\end{thebibliography}
+\end{verbatim}
+
+\begin{thebibliography}{longuissimo}
+\bibitem[Tahan83]{malba-tahan} TAHAN, Malba. \emph{O Homem que
+Calculava}. Ed. Círculo do Livro. Edição integral. 1983.
+
+\bibitem[Calvino03]{se-um-viajante} CALVINO, Ítalo. 
+\emph{Se um Viajante numa Noite de Inverno}. Ed. Schwarcz. 2003.
+\end{thebibliography}
+
+Vejamos o papel de cada um dos elementos no exemplo. {\tt
+  longuissimo} é qualquer texto que tenha tamanho maior (ou igual) ao
+rótulo mais longa entrada da bibliografia. Ele é usado pelo
+\LaTeX\ para reservar espaço para os rótulos quando ele compõe os
+itens da bibliografia.
+
+Tanto {\tt Tahan83} quanto {\tt Calvino03} são rótulos que aparecerão,
+por exemplo, quando usar o comando~\macroCallWithParameter{cite}{malba-tahan}.
+
+\subsection{Bib\TeX}
+
+
 bibliografia
 
 citando

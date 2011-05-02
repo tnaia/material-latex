@@ -51,6 +51,9 @@
 % barra `\' em tt
 \newcommand{\barra}{{\tt\char`\\}}
 
+% underscore '_' em tt
+\newcommand{\underscore}{{\tt\char`\_}}
+
 % envolve parâmetro em chaves em tt
 \newcommand{\wrapinbraces}[1]{{\tt \lch#1\rch}}
 
@@ -76,7 +79,7 @@
 
 
 % ambiente em que vou aninhar tt em footnote...
-\newenvironment{ttsampleflushleft}{\noindent\footnotesize\tt}{}
+\newenvironment{ttsampleflushleft}{\noindent\footnotesize\tt\microtypesetup{protrusion=false}}{\microtypesetup{protrusion=true}}
 \newenvironment{ttsample}%
         {\begin{center}\begin{ttsampleflushleft}}%
         {\end{ttsampleflushleft}\end{center}}
