@@ -1,16 +1,35 @@
 \section{Aspectos estruturais}
 
-\subsection{A construção da página}
-\subsubsection{Anatomia da página}
+Chegou a hora de aproximar-mo-nos um pouco mais do \LaTeX,
+conhecer-lhe melhor os trejeitos e manhas, falar mais a sua
+língua. Esse conhecimento é valioso quando quisermos convencê-lo a
+fazer algo diferente para nós.
 
-notas de rodapé, notas marginais, cabeçalho, número de página
+%% \subsection{A construção da página}
+
+%% Knuth descreve o processo pelo qual o \TeX\ compõe o texto fazendo uma
+%% analogia entre as etapas do algoritmo e a digestão. O sistema teria
+%% olhos, boca, estômago, e intestinos (que soltam ao final a nossa obra).
+%% Não nos cabe aqui abordar os detalhes sórdidos do que se passa nas
+%% entranhas do sistema. Trataremos do grande projeto da página, e de
+%% como o \LaTeX\ move informação para cá e para lá. Mas é bom ter em
+%% mente de onde viemos, nem que seja para levar o sistema ao médico
+%% certo quando alguma coisa entalar.
+
+%% clearpage, newpage
+
+%% \subsubsection{Anatomia da página}
+
+%% notas de rodapé, notas marginais, cabeçalho, número de página
 
 \subsection{Parágrafos marginais}
 \newcommand{\amounttorotate}{0}\newlength{\recuo}
 Usar \marginpar{\ifthenelse{\isodd{\thepage}}{\raggedright}{\raggedleft}\footnotesize notas marginais} notas
 marginais no texto pode ser uma maneira interessante de destacar algum
 conceito. O comando \verb'\marginpar{parágrafo}' acrescenta um
-parágrafo à margem do parágrafo atual. É possível mudar drasticamente
+parágrafo à margem do parágrafo atual. 
+
+É possível mudar drasticamente
 a aparência de um parágrafo lateral (assim como de qualquer outro tipo
 de parágrafo): diminuir a fonte em que é escrito, deixá-lo rasgado à
 direita ou esquerda (seção~\ref{sec:alinhamento}),
@@ -50,30 +69,66 @@ Houve um tempo\footnote{Por volta de 1920.} em
 que as pessoas viviam como se estivessem na 
 década de 20.
 \vspace*{1cm}
-\end{minipage}
-\end{tabular}
-\smallskip\hrule
+\end{minipage}\nobreak
+\end{tabular}%
+\nobreak\smallskip\nobreak\hrule
 \end{center}
 
-clearpage, newpage
 
-\subsubsection{Caixas}\label{sec:caixas}
+%% \subsubsection{Caixas}\label{sec:caixas}
 
-\subsubsection{Medidas}\label{sec:medidas}
+%% \subsubsection{Medidas}\label{sec:medidas}
 
-comprimentos  (medidas, medindo coisas, criando seus próprios
-comprimentos)
+%% comprimentos  (medidas, medindo coisas, criando seus próprios
+%% comprimentos)
 
-espaços
+%% espaços
 
-pacote \verb!geometry!, \verb!multicolumn!
-
-\subsubsection{Encaixotando}
+%% \subsubsection{Encaixotando}
 
 \subsection{Arquivos auxiliares}
 
+O \LaTeX\ se vale de um bom número de arquivos auxiliares para
+realizar seu trabalho. Tomemos um tempo para observar como funciona o
+processo de uso de um arquivo auxiliar.
 
+Algus desses arquivos são produzidos pelo próprio \LaTeX, durante a
+compilação do documento. O índice do documento, suas listas de tabelas
+e figuras, assim como vários outros, são criados para armazenar as
+linhas de índices de elementos de certos tipos. Ao processar um
+documento com índice, por exemplo, os números das páginas em que as
+seções se iniciam são armazenados para posterior uso. Cada vez que o
+texto passa pelo \LaTeX, os números de página mais recentemente
+armazenados nos arquivos auxiliares são colocados nos índices.
 
-\subsection{Contadores}\label{sec:contadores}
+Um processo parecido acontece com arquivos externos que são gerados
+por programas como Bib\TeX\ (seção~\ref{sec:biblio}),
+\programa{makeindex} e~\programa{makeglossaries}
+(seção~\ref{sec:indice-glossario}). A diferença, então, é que
+\emph{após} ser processado pelo \LaTeX, o
+texto-fonte\index{texto-fonte} passa ainda por um dos demais, ou
+ambos. E, depois, ainda deve ser \LaTeX ado mais duas vezes ao menos,
+para que as referências sejam atualizadas.
+
+%% \subsection{Contadores}\label{sec:contadores}
 
 \subsection{Comandos frágeis}
+
+Alguns comandos, como todos nós, precisam por vezes de atenção
+especial, é preciso protegê-los. Você pode fazê-lo com
+\macroCall{\protect}, que tem como argumento algum texto que precise
+ser protegido.
+
+Essa necessidade advém do fato que alguns fazem sentido apenas
+se presentes em determinada parte do texto, e, se não protegidos,
+podem ser inadvertidamente removidos de seu contexto-natal por outros
+comandos.
+
+Exemplos de comandos ``transportadores'' são \macroCall{section}
+e~\macroCall{caption}, por exemplo. O texto que é passado como
+parâmetro para essas sequências de controle não aparece apenas \emph{in loco},
+mas são carregados para índices, listas de figuras, ou mesmo para o
+cabeçalho da página.
+
+Mas não entremos em detalhes ainda. O importante por agora é que,
+havendo perigo à vista, pode ser necessária proteção.
