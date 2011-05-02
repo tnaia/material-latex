@@ -4,14 +4,15 @@ Veremos nesta seção duas abordagens para a composição de
 bibliografias. Em uma delas, escrevemos a bibliografia linha por
 linha, assim como escrevemos o texto. O \LaTeX\ automaticamente 
 numera as entradas da bibliografia, e você pode referenciá-los com o
-comando \macroCall{cite}.
+comando \macroCallWithParameter{cite}{rotulo}.
 
-Outro jeito, muito popular a propósito, de trabalhar com bibliografias
+Outro jeito, muito popular a propósito, de trabalhar com bibliografias,
 é usando o programa Bib\TeX. Nessa abordagem, as entradas
-bibliográficas são escritas em um arquivo \extensao{bib}, seus campos
-(autor, edição, editora, etc.) são marcados semanticamente, e a
-formataçao é deixada a encargo do programa Bib\TeX\footnote{E pacotes
-  que você porventura acrescente para configurar esse conportamento.}.
+bibliográficas são escritas em um arquivo de extensão~\extensao{bib},
+seus campos (autor, edição, editora, etc.) são marcados
+semanticamente, e a formataçao é deixada a encargo do programa
+Bib\TeX\footnote{E pacotes que você porventura acrescente para
+  configurar esse conportamento.}.
 
 \subsection{Fazendo no muque}
 
@@ -20,8 +21,10 @@ estejam postas em um ambiente próprio,
 o~\ambiente{thebibliography}. Cada entrada possui opcionalmente um
 rótulo público, que aparecerá entre colchetes quando for citada, e
 ainda um rótulo interno, que funciona como os rótulos definidos com
-\macroCall{ref}. Se nenhum rótulo público é fornecido, o
-\LaTeX\ numera as entradas, e coloca ali o respectivo número.
+\macroCall{label}, podendo ser referenciado usando o
+comando~\macroCallWithParameter{cite}{rotulo}. Se nenhum rótulo
+público é fornecido, o \LaTeX\ numera as entradas, e coloca ali o
+respectivo número.
 
 Outra característica importante deste método é que as referências
 aparecem exatamente na ordem em que foram declaradas, como seria de se
@@ -62,9 +65,72 @@ por exemplo, quando usar o comando~\macroCallWithParameter{cite}{malba-tahan}.
 
 \subsection{Bib\TeX}
 
+O programa Bib\TeX\ foi criado por Oren Patashnik há mais de vinte
+anos. A ideia é preparar um arquivo (geralmente com a extensão
+\extensao{bib}), em que estão listadas diversas entradas. Cada entrada
+tem um tipo, e uma série de campos com seus respectivos valores. Os
+tipos de entradas padrão incluem livros, revistas, propostas de
+palestras em conferências (\emph{inproceedings}), artigos
+(\emph{article}), parte de livros (\emph{inbook} --- capítulo, seção
+etc.), manuais (\emph{manual}), dissertações de mestrado
+(\emph{masterthesis}), teses de doutorado (\emph{phdthesis}),
+relatórios (\emph{report}), textos que não foram publicados
+(\emph{unpublished}) e alguns outros (entre eles miscelâneo ---
+\emph{misc} --- quando nada mais servir). Para uma lista de todos os
+tipos, nada como olhar a documentação do Bib\TeX\ em seu
+sistema.\negthinspace\footnote{Geralmente o arquivo se chama
+  \arquivo{btxdoc}.}$^\textrm,$\thinspace\footnote{Também recomendamos
+  a páginas~\url{http://www.bibtex.org}
+  e~\url{http://data.bibbase.org/}. O formato Bib\TeX\ é bastante
+  difundido, e diversos programas possuem expansões para facilitar a
+  busca e conversão de entradas de bibliografia usando esse formato.}
 
-bibliografia
+Para acrescentar a bibliografia ao documento, podemos usar 
+\macroCallWithParameter{bibliography}{arquivo} (\extensao{.bib} não é
+necessário), onde se quer que ela seja incluída. 
 
-citando
+O comum é que a bibliografia cresça juntamente com o texto. Assim,
+eventualmente você escreverá um texto em que citará um determinado
+texto. Você acrescenta o \macroCall{cite} correspondente, e depois
+acrescenta ao arquivo com as entradas bibliográficas a nova
+entrada. Para que ela apareça no documento, será preciso que o
+Bib\TeX\ processe o documento, após o que o documento ainda deverá ser
+processado como de costume, para que as referências sejam
+atualizadas. Para dar conta do recado, processe o documento antes e
+ao menos duas vezes depois de processá-lo com o Bib\TeX:
+\begin{enumerate}
+\item Processe o documento uma vez (\LaTeX e o documento),
+\item Bib\TeX e o documento, e
+\item processe o documento mais duas vezes (a primeira produz as
+  referências corretas e a seguinda as coloca no documento produzido).
+\end{enumerate}
 
-bibtex
+O pacote \pacote{babelbib}, usado em conjunto com~\pacote{babel}
+facilita a composição de entradas bibliográficas quando as referências
+contém itens em diversos idiomas. Problemas com acentuação podem ser
+solucionados amiúde com o uso de comandos para acentuação como os
+vistos na seção~\ref{sec:ascii}. 
+
+Terminamos a seção com um exemplo simplório de um arquivo com as
+entradas bibliográficas para o Bib\TeX. (O comando~\macroCall{LaTeXe}
+produz \LaTeXe.)
+
+\begin{verbatim}
+@BOOK{malba-tahan,
+ author={Malba Tahan},
+ title={O Homem que Calculava},
+ publusher={Círculo do Livro}
+ year={1983},
+ note={edição integral}
+}
+
+@MANUAL{{lshort,
+  author = "Tobias Oetiker and others",
+  title = "The Not So Short Introduction to {\LaTeXe}:
+           Or {\LaTeXe} in 157 minutes",
+  month = june,
+  note = "on ctan \url{/info/lshort}",
+  year = 2010
+}
+\end{verbatim}
+
