@@ -70,7 +70,7 @@ A terceira e última etapa antes que se passe ao processamento do texto
 que deve deixar o comando
 
 \begin{center}
-  \macroCall{printindex}
+  \macroCall{printindex}\index{printindex@\macroCall{printindex}}
 \end{center}
 
 Agora é a dança de processamento de sempre, mudando os parezinhos: uma
@@ -79,3 +79,59 @@ bem a farra.
 
 \subsection{Glossários}
 
+A maior parte dos passos envolvidos na composição de um glossário já
+foi abordada em alguma parte deste documento. Um pacote muito usado
+para compor glossários é~\pacote{glossaries}. Como acontece para
+índices remissivos, é preciso haver \macroCall{makeglossaries} em
+algum ponto do preâmbulo do documento para que o o glossário seja de
+fato processado. Para compor um glossário, definem-se as entradas
+(dotando-lhes de um rótulo para futura referência); esses rótulos são
+então usados pelo texto para referir aos termos que representam; por
+fim, o documento é processado, pelo \LaTeX\ e por algum programa que
+permita extrair do documento as ocorrências de termos do glossário.
+
+Definimos rótulos com
+\macroCallWithTwoParameters{newglossaryentry}{rotulo}{configuracao}
+(há outros meios). O rótulo é apenas um nome pelo qual nos referiremos
+ao conceito, como na discussão sobre referências internas na
+seção~\ref{sec:ref-e-label}. A configuração é um texto que define
+várias propriedades do item do glossário (por exemplo, sua forma plural, sua
+descrição, seu nome, caso texto do item seja diferente de seu
+rótulo). Há ainda a possibilidade de fornecer um texto opcional que é
+usado para a ordenação das entradas no glossário. Observe o
+exemplo. (\macroCall{ensuremath} é um comando que garante que seu
+argumento esteja em modo matemático.)
+
+\begin{verbatim}
+\newglossaryentry{pi}
+{
+  name={\ensuremath{\pi}},
+  description={razão entre o comprimento de uma circunferência 
+               e seu diâmetro},
+  sort=pi
+}
+\end{verbatim}
+
+É possível colocar acrônimos (e siglas) em uma lista separada no
+glossário. Como fazê-lo é um mistério revelado apenas aos interessados
+que se dão ao trabalho de investigar o assunto.
+
+Os itens do glossário são  assessíveis pelas macros
+\macroCall{gls}, \macroCall{Gls}, \macroCall{glspl}, \macroCall{Glspl},
+entre outras, que recebem como parâmetro um rótulo. Os comandos
+iniciando com letra minúscula apresentam a entrada tal como ela foi
+declarada (ou o rótulo, se nenhum \parametro{nome} foi
+configurado). Com letra maiúscula, deixam a inicial do item maiúscula
+(para uso em início de frases, por exemplo). A variante desses
+comandos que termina por ``{\tt pl}'' representa uma versão
+pluralizada do conceito.
+
+Definidos e empregados os termos do glossário, determinamos a
+localização do glossário no texto com \macroCall{printglossaries}. A
+partir daí, é só processar o documento:
+\begin{enumerate}
+\item \LaTeX ar,
+\item processar com o programa~\programa{makeglossaries} (ou
+  equivalente), e
+\item \LaTeX ar mais duas vezes.
+\end{enumerate}
