@@ -1,4 +1,81 @@
-\section{Índices remissivos {\it \&} Cia.:
-  Makeindex}\label{sec:indice-glossario}
+\section{Índices remissivos {\it \&} Cia.}\label{sec:indice-glossario}
 
-Glossários e índices remissivos.
+Glossários e índices remissivos são elementos delicados, por sua
+natureza distribuída. São como que amarrações de palavras, uma teia
+que se espalha por toda a tessitura do documento, associando
+conceitos. Veremos agora como usar esses elementos no \LaTeX.
+
+Aqui arquivos auxiliares continuam desempenhando um papel
+importante. Mantemos um fluxo de trabalho análogo ao da
+preparação de bibliografias (seção~\ref{sec:biblio}). Acrescentamos ao
+documento diretrizes declarando a existência do elemento em questão, e
+marcamos ainda a as suas manifestações (expressões, indexadas ou
+definidas num glossário). Glossários demandam uma preparação a mais: é
+preciso escrever as definições dos termos, ou declarar o arquivo
+externo em que estão contidas. Tendo feito isso, o procedimento é
+padrão:
+\begin{enumerate}
+\item \LaTeX ar o documento,
+\item processar o documento para gerar glossário ou índice remissivo,
+\item \LaTeX ar o documento mais duas vezes, para atualizar os índices
+  e referências de páginas.
+\end{enumerate}
+
+\subsection{Índices remissivos}
+
+O primeiro passo é acrescentar um pacote que permita gerar índices,
+como por exemplo~\pacote{makeidx} (que usamos aqui). Ele funciona em
+conjunto com o programa~\programa{makeindex}, que processa o documento
+em busca dos índices, anotando as páginas em que ocorrem. Alem disso,
+é preciso colocar o comando \macroCall{makeindex}, caso contrário o
+índice não será produzido (é um jeito fácil de ``desligar'' o índice,
+quando oportuno).
+
+O segundo passo é criar as entradas do índice. O que é uma entrada do
+índice? É uma referência para um ponto (em geral sua página) do texto,
+associado a uma palavra. Como índices podem ser longos, é comum que
+sejam ordenados alfabeticamente.
+Para associar a um termo uma entrada no índice existe o comando
+\macroCallWithParameter{index}{nome no
+  índice}\index{index@\macroCall{index}}, que faz com que, no índice
+remissivo, seja criada uma entrada apontando para a página corrente,
+rotulado com ``{\tt nome no índice}''. 
+
+Acontece que \programa{makeindex} nem sempre tem pela frente uma
+tarefa fácil quando se propõe a organizar o índice em ordem
+alfabética. Por exemplo, como você ordenaria ``néctar'', ``nervo'',
+``\macroCall{newcommand}'', e ``$\pi$''? Para isso existe um modo
+alternativo de declarar uma entrada no índice, usando a
+seguinte sintaxe.
+
+\begin{center}
+\macroCallWithParameter{index}{versao ascii para ordenacao@versão
+  \barra com\wrapinbraces{firulas}}\index{versao ascii para
+  ordenacao@versão \textbackslash com\{firulas\}}
+\end{center}
+
+(Não, \macroCall{com} não é um comando.)
+
+Uma última característica: algumas vezes queremos expressar uma
+hierarquia de conceitos no índice. Isso também é possível (os
+conceitos-subordinados aparecem todos organizados ``dentro'' da
+entrada do elemento hierarquicamente superior, no índice). Como chegar
+a esse efeito almejadíssimo é algo a respeito de que nos preservamos o
+direito de calar. Tire a caneta da orelha e tome cá, esta é a tua
+pulga. Poderá tirá-la daí com uma olhadela na documentação do
+pacote~\pacote{makeidx}.
+
+A terceira e última etapa antes que se passe ao processamento do texto
+é definir em que ponto daquele estará o índice. É nesse exato lugar
+que deve deixar o comando
+
+\begin{center}
+  \macroCall{printindex}
+\end{center}
+
+Agora é a dança de processamento de sempre, mudando os parezinhos: uma
+com~\LaTeX, outra com~\programa, e mais duas com~\LaTeX\ para terminar
+bem a farra.
+
+\subsection{Glossários}
+
